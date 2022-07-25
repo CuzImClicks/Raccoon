@@ -42,7 +42,7 @@ def download_images():
     return image_paths
 
 IMAGE_PATHS = download_images()
-
+print("Downloaded Images")
 
 # %%
 # Download the model
@@ -73,7 +73,7 @@ def download_model(model_name, model_date):
 MODEL_DATE = '20200711'
 MODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'
 PATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)
-
+print("Downloaded Model")
 # %%
 # Download the labels
 # ~~~~~~~~~~~~~~~~~~~
@@ -94,7 +94,7 @@ def download_labels(filename):
 
 LABEL_FILENAME = 'mscoco_label_map.pbtxt'
 PATH_TO_LABELS = download_labels(LABEL_FILENAME)
-
+print("Downloaded Labels")
 # %%
 # Load the model
 # ~~~~~~~~~~~~~~
@@ -104,8 +104,8 @@ from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as viz_utils
 
 PATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + "/saved_model"
-
-print('Loading model...', end='')
+print(PATH_TO_SAVED_MODEL)
+print('Loading model...')
 start_time = time.time()
 
 # Load saved model and build the detection function
