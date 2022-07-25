@@ -2,7 +2,7 @@
 
 A TensorFlow based application to recognize people on video feeds.
 
-# Docker
+# Docker - How to run
 Build the docker image
 
 `docker build -t my-name/my-image .`
@@ -11,7 +11,11 @@ Run the docker image
 
 `docker run --rm -i -t my-name/my-image bash`
 
-To copy something to or from a docker container
+In the bash command line run to start the program
+
+`python plot_object_detection_saved_model.py`
+
+To copy something(the final images) to or from a docker container
 
 ```bash
 docker ps
@@ -20,7 +24,7 @@ docker cp <file path> <container id>:<destination path>
 
 ## TODO:
 - [ ] train own dataset
-- [ ] dockerize for deployment
+- [x] dockerize for deployment
 - [ ] code quality with codacy
 - [x] tensorflow
 - [ ] pr based contributing
