@@ -5,12 +5,12 @@ Object Detection From TF2 Saved Model
 =====================================
 """
 
-# %%
+
 # This demo will take you through the steps of running an "out-of-the-box" TensorFlow 2 compatible
 # detection model on a collection of images. More specifically, in this example we will be using
 # the `Saved Model Format <https://www.tensorflow.org/guide/saved_model>`__ to load the model.
 
-# %%
+
 # Download the test images
 # ~~~~~~~~~~~~~~~~~~~~~~~~
 # First we will download the images that we will use throughout this tutorial. The code snippet
@@ -31,7 +31,7 @@ for gpu in gpus:
 def download_images():
 #   base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/test_images/'
     base_url = 'https://garagenparkhalle.de/sites/default/files/Analyse/'
-    filenames = ['image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg']
+    filenames = ["image4.jpg", "image5.jpg", "image6.jpg"]#['image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg']
     image_paths = []
     for filename in filenames:
         image_path = tf.keras.utils.get_file(fname=filename,
@@ -44,7 +44,7 @@ def download_images():
 IMAGE_PATHS = download_images()
 print("Downloaded Images")
 
-# %%
+
 # Download the model
 # ~~~~~~~~~~~~~~~~~~
 # The code snippet shown below is used to download the pre-trained object detection model we shall
@@ -74,7 +74,7 @@ MODEL_DATE = '20200711'
 MODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'
 PATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)
 print("Downloaded Model")
-# %%
+
 # Download the labels
 # ~~~~~~~~~~~~~~~~~~~
 # The coode snippet shown below is used to download the labels file (.pbtxt) which contains a list
@@ -95,7 +95,7 @@ def download_labels(filename):
 LABEL_FILENAME = 'mscoco_label_map.pbtxt'
 PATH_TO_LABELS = download_labels(LABEL_FILENAME)
 print("Downloaded Labels")
-# %%
+
 # Load the model
 # ~~~~~~~~~~~~~~
 # Next we load the downloaded model
@@ -104,18 +104,19 @@ from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as viz_utils
 
 PATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + "/saved_model"
-print(PATH_TO_SAVED_MODEL)
 print('Loading model...')
 start_time = time.time()
 
+detect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)
+
 # Load saved model and build the detection function
-detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)
+#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)
 
 end_time = time.time()
 elapsed_time = end_time - start_time
 print('Done! Took {} seconds'.format(elapsed_time))
 
-# %%
+
 # Load label map data (for plotting)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Label maps correspond index numbers to category names, so that when our convolution network
@@ -126,7 +127,7 @@ print('Done! Took {} seconds'.format(elapsed_time))
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,
                                                                     use_display_name=True)
 
-# %%
+
 # Putting everything together
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # The code shown below loads an image, runs it through the detection model and visualizes the
@@ -195,7 +196,13 @@ for image_path in IMAGE_PATHS:
 
     # detection_classes should be ints.
     detections['detection_classes'] = detections['detection_classes'].astype(np.int64)
+    contains_person = False
+    for index, value in enumerate(detection["detection_classes"]):
+        if value == 1 and detections["detections_scores"][index] > 0.3:
+            contains_person = True
 
+    if not contains_person: 
+        continue
     image_np_with_detections = image_np.copy()
 
     viz_utils.visualize_boxes_and_labels_on_image_array(
@@ -211,9 +218,12 @@ for image_path in IMAGE_PATHS:
 
     plt.figure()
     plt.imshow(image_np_with_detections)
+    
     (dirname, filename) = os.path.split(image_path)
-    plt.savefig(dirname+'\\new_'+filename)
-    print('Done')
+    new_image_path = dirname+'/new_'+filename
+    print(new_image_path)
+    plt.savefig(new_image_path)
+print('Done')
 plt.show()
 
 # sphinx_gallery_thumbnail_number = 2

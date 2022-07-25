@@ -5,7 +5,7 @@ A TensorFlow based application to recognize people on video feeds.
 # Docker
 Build the docker image
 
-`docker build -t my-name/my-image`
+`docker build -t my-name/my-image .`
 
 Run the docker image
 
@@ -15,7 +15,6 @@ Run the docker image
 - [ ] train own dataset
 - [ ] dockerize for deployment
 - [ ] code quality with codacy
-- [ ] tensorflow
+- [x] tensorflow
 - [ ] pr based contributing
 - [ ] discord webhook for results
-- [ ] 
