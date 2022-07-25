@@ -23,6 +23,11 @@ import tensorflow as tf
 
 tf.get_logger().setLevel('ERROR')           # Suppress TensorFlow logging (2)
 
+print("_"*20)
+print(f"CuzImClicks/Raccoon Image Detection")
+print("_"*20)
+print(os.getcwd())
+
 # Enable GPU dynamic memory allocation
 gpus = tf.config.experimental.list_physical_devices('GPU')
 for gpu in gpus:
@@ -41,8 +46,8 @@ def download_images():
         image_paths.append(str(image_path))
     return image_paths
 
-IMAGE_PATHS = download_images()
-print("Downloaded Images")
+#IMAGE_PATHS = download_images()
+#print("Downloaded Images")
 
 
 # Download the model
@@ -127,7 +132,8 @@ print('Done! Took {} seconds'.format(elapsed_time))
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,
                                                                     use_display_name=True)
 
-
+print(f"Loaded category index")
+print(category_index)
 # Putting everything together
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # The code shown below loads an image, runs it through the detection model and visualizes the
@@ -163,67 +169,96 @@ def load_image_into_numpy_array(path):
     """
     return np.array(Image.open(path))
 
+def computeAndSaveImages(images: list):
 
-for image_path in IMAGE_PATHS:
+    for image_path in images:
+        print(f'Running inference for {image_path}... ')
 
-    print('Running inference for {}... '.format(image_path), end='')
+        image_np = load_image_into_numpy_array(image_path)
 
-    image_np = load_image_into_numpy_array(image_path)
+        # Things to try:
+        # Flip horizontally
+        # image_np = np.fliplr(image_np).copy()
 
-    # Things to try:
-    # Flip horizontally
-    # image_np = np.fliplr(image_np).copy()
+        # Convert image to grayscale
+        # image_np = np.tile(
+        #     np.mean(image_np, 2, keepdims=True), (1, 1, 3)).astype(np.uint8)
 
-    # Convert image to grayscale
-    # image_np = np.tile(
-    #     np.mean(image_np, 2, keepdims=True), (1, 1, 3)).astype(np.uint8)
+        # The input needs to be a tensor, convert it using `tf.convert_to_tensor`.
+        input_tensor = tf.convert_to_tensor(image_np)
+        # The model expects a batch of images, so add an axis with `tf.newaxis`.
+        input_tensor = input_tensor[tf.newaxis, ...]
 
-    # The input needs to be a tensor, convert it using `tf.convert_to_tensor`.
-    input_tensor = tf.convert_to_tensor(image_np)
-    # The model expects a batch of images, so add an axis with `tf.newaxis`.
-    input_tensor = input_tensor[tf.newaxis, ...]
+        # input_tensor = np.expand_dims(image_np, 0)
+        detections = detect_fn(input_tensor)
 
-    # input_tensor = np.expand_dims(image_np, 0)
-    detections = detect_fn(input_tensor)
+        # All outputs are batches tensors.
+        # Convert to numpy arrays, and take index [0] to remove the batch dimension.
+        # We're only interested in the first num_detections.
+        num_detections = int(detections.pop('num_detections'))
+        detections = {key: value[0, :num_detections].numpy()
+                    for key, value in detections.items()}
+        detections['num_detections'] = num_detections
 
-    # All outputs are batches tensors.
-    # Convert to numpy arrays, and take index [0] to remove the batch dimension.
-    # We're only interested in the first num_detections.
-    num_detections = int(detections.pop('num_detections'))
-    detections = {key: value[0, :num_detections].numpy()
-                   for key, value in detections.items()}
-    detections['num_detections'] = num_detections
+        # detection_classes should be ints.
+        detections['detection_classes'] = detections['detection_classes'].astype(np.int64)
+        contains_person = False
+        for index, value in enumerate(detections["detection_classes"]):
+            if value == 1 and detections["detection_scores"][index] > 0.3:
+                contains_person = True
 
-    # detection_classes should be ints.
-    detections['detection_classes'] = detections['detection_classes'].astype(np.int64)
-    contains_person = False
-    for index, value in enumerate(detection["detection_classes"]):
-        if value == 1 and detections["detections_scores"][index] > 0.3:
-            contains_person = True
+        if not contains_person:
+            print(f"No person found in image")
+            continue
 
-    if not contains_person: 
-        continue
-    image_np_with_detections = image_np.copy()
+        important = {f"{category_index[det]['name']}#{index}": detections["detection_scores"][index] for index, det in enumerate(detections["detection_classes"]) if detections["detection_scores"][index] > 0.3}
+        print(f"Findings for {image_path}")
+        print(important)
+        
+        image_np_with_detections = image_np.copy()
 
-    viz_utils.visualize_boxes_and_labels_on_image_array(
-          image_np_with_detections,
-          detections['detection_boxes'],
-          detections['detection_classes'],
-          detections['detection_scores'],
-          category_index,
-          use_normalized_coordinates=True,
-          max_boxes_to_draw=200,
-          min_score_thresh=.30,
-          agnostic_mode=False)
+        viz_utils.visualize_boxes_and_labels_on_image_array(
+            image_np_with_detections,
+            detections['detection_boxes'],
+            detections['detection_classes'],
+            detections['detection_scores'],
+            category_index,
+            use_normalized_coordinates=True,
+            max_boxes_to_draw=200,
+            min_score_thresh=.30,
+            agnostic_mode=False)
 
-    plt.figure()
-    plt.imshow(image_np_with_detections)
-    
-    (dirname, filename) = os.path.split(image_path)
-    new_image_path = dirname+'/new_'+filename
-    print(new_image_path)
-    plt.savefig(new_image_path)
+        plt.figure()
+        plt.imshow(image_np_with_detections)
+        
+        (dirname, filename) = os.path.split(image_path)
+        new_image_path = "./output"+'/new_'+filename
+        print(new_image_path)
+        plt.savefig(new_image_path)
+        print("\n")
+
+if __name__ == "__main__":
+    print("Started the listener")
+    while True:
+        new_files = os.listdir("./input")
+        if len(new_files) > 0:
+            print("New files found")
+            new_files = [f"./input/{f}" for f in new_files if f.endswith(".jpg")]
+            print(new_files)
+            computeAndSaveImages(new_files)
+            for f in new_files:
+                print(f"Deleted the source file for {f}")
+                os.remove(f"{f}")
+
+            print("\n"*2)
+        
+        else:
+            print("Waiting for new files")
+
+        time.sleep(10)
+
 print('Done')
 plt.show()
+
 
 # sphinx_gallery_thumbnail_number = 2

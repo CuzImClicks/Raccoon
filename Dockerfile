@@ -13,7 +13,10 @@ RUN git clone https://github.com/tensorflow/models/
 
 WORKDIR ./models/research/
 
+RUN mkdir input
+RUN mkdir output
+
 RUN protoc object_detection/protos/*.proto --python_out=.
 RUN export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
 
-COPY . .
+COPY plot_object_detection_saved_model.py .
