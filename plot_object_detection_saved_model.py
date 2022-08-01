@@ -16,6 +16,8 @@ print("_"*20)
 print(f"CuzImClicks/Raccoon Image Detection")
 print("\n")
 print(os.getcwd())
+production = bool(os.environ.get("PRODUCTION"))
+print(f"production set to: {production}")
 
 # Enable GPU dynamic memory allocation
 gpus = tf.config.experimental.list_physical_devices('GPU')
@@ -135,9 +137,9 @@ def computeAndSaveImages(images: list):
             if value == 1 and detections["detection_scores"][index] > 0.3:
                 contains_person = True
 
-        if not contains_person:
-            print(f"No person found in image")
-            continue
+        #if not contains_person:
+        #    print(f"No person found in image")
+        #    continue
 
         important = {f"{category_index[det]['name']}#{index}": detections["detection_scores"][index] for index, det in enumerate(detections["detection_classes"]) if detections["detection_scores"][index] > 0.3}
         print(f"Findings for {image_path}")
