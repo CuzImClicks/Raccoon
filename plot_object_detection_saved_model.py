@@ -137,9 +137,9 @@ def computeAndSaveImages(images: list):
             if value == 1 and detections["detection_scores"][index] > 0.3:
                 contains_person = True
 
-        #if not contains_person:
-        #    print(f"No person found in image")
-        #    continue
+        if not contains_person and production:
+            print(f"No person found in image")
+            continue
 
         important = {f"{category_index[det]['name']}#{index}": detections["detection_scores"][index] for index, det in enumerate(detections["detection_classes"]) if detections["detection_scores"][index] > 0.3}
         print(f"Findings for {image_path}")
@@ -170,22 +170,26 @@ def computeAndSaveImages(images: list):
 if __name__ == "__main__":
     print("Started the listener")
     while True:
-        new_files = os.listdir("./input")
-        if len(new_files) > 0:
-            print("New files found")
-            new_files = [f"./input/{f}" for f in new_files if f.endswith(".jpg")]
-            print(new_files)
-            computeAndSaveImages(new_files)
-            for f in new_files:
-                print(f"Deleted the source file for {f}")
-                os.remove(f"{f}")
+        try:
+            new_files = os.listdir("./input")
+            if len(new_files) > 0:
+                print("New files found")
+                new_files = [f"./input/{f}" for f in new_files if f.endswith(".jpg")]
+                print(new_files)
+                computeAndSaveImages(new_files)
+                for f in new_files:
+                    print(f"Deleted the source file for {f}")
+                    os.remove(f"{f}")
 
-            print("\n"*2)
-        
-        else:
-            print("Waiting for new files")
+                print("\n"*2)
+            
+            else:
+                print("Waiting for new files")
 
-        time.sleep(10)
+            time.sleep(10)
+
+        except Exception as e:
+            print(e)
 
 print('Done')
 plt.show()
