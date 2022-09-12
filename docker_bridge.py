@@ -1,7 +1,8 @@
 import subprocess
-import sys
 import time
 import os
+import requests
+
 
 def cmd(command):
     if type(command) is str:
@@ -9,11 +10,14 @@ def cmd(command):
 
     return subprocess.check_output(command).decode()
 
+
 def system(command):
     return os.system(str(command))
 
+
 def get_container_id():
     return cmd("docker ps").split("\n")[1][:12]
+
 
 container_id = get_container_id()
 
@@ -29,12 +33,13 @@ def is_int(number):
     except:
         return False
 
-print("_"*20)
+
+print("_" * 20)
 print(f"CuzImClicks/Raccoon Docker Bridge")
 print("\n")
 
 print("""Commands
-upload <number|filepath>
+upload <number|filepath|url id>
 download <number|filepath>
 mv <file> <new_loc>
 printenv
@@ -47,19 +52,29 @@ while True:
     argv = argv.split(" ")
     first = argv.pop(0)
     if first == "upload":
+        if argv[0].startswith("https://") and len(argv) == 2:
+            response = requests.get(argv[0])
+            with open(f"image{argv[1]}.jpg", "wb") as file:
+                file.write(response.content)
+            docker_cp(f"image{argv[1]}.jpg", f"{container_id}:/home/models/research/input")
+            print(f"Docker copied image{argv[1]} to container: {container_id}")
+            time.sleep(2)
+            continue
+
         if not len(argv) == 1:
             print("Usage")
             print("upload <number|filepath>")
             print("    number - The number of the image (image<number>.jpg)")
             print("    filepath - The path to the image")
             continue
+
         for file in argv:
             if is_int(file):
                 file = f"image{file}.jpg"
             print(file)
             if not file.endswith(".jpg"):
                 continue
-            
+
             docker_cp(file, f"{container_id}:/home/models/research/input")
             print(f"Docker copied {file} to container: {container_id}")
             time.sleep(2)
@@ -76,7 +91,7 @@ while True:
                 file = f"new_image{file}.jpg"
             if not file.startswith("new_"):
                 file = f"new_{file}"
-            
+
             docker_cp(f"{container_id}:/home/models/research/output/{file}", ".")
             print(f"Docker copied {file} from container: {container_id}")
             time.sleep(2)
@@ -111,7 +126,7 @@ while True:
                 print(f"{arg} = {environ_dict[arg]}")
             else:
                 print(f"The environment variables do not contain {arg}")
-                
+
             continue
         print(os.environ)
 
