@@ -30,7 +30,7 @@ def is_int(number):
         return False
 
 print("_"*20)
-print(f"CuzImClicks/Raccoon Docker Bridge")
+print("CuzImClicks/Raccoon Docker Bridge")
 print("\n")
 
 print("""Commands
@@ -94,14 +94,14 @@ while True:
     elif first == "env":
         print("Not working")
         continue
-        if not len(argv) == 2:
-            print("env <name> <value>")
-            print("    name - The name of the environment variable")
-            print("    value - The value of the environment variable")
-            continue
+        #if not len(argv) == 2:
+        #    print("env <name> <value>")
+        #    print("    name - The name of the environment variable")
+        #    print("    value - The value of the environment variable")
+        #    continue
 
-        system(f'export {str(argv[0])}="{str(argv[1])}"')
-        print(f"Set env {str(argv[0])} = {str(argv[1])}")
+        #system(f'export {str(argv[0])}="{str(argv[1])}"')
+        #print(f"Set env {str(argv[0])} = {str(argv[1])}")
 
     elif first == "printenv":
         if len(argv) > 0:
@@ -120,3 +120,17 @@ while True:
 
     elif first == "exit":
         exit()
+
+    elif first == "compile":
+        if not len(argv) == 1:
+            system("docker build -t cuzimclicks/raccoon .")
+
+        else:
+            system(f"docker build -t {argv[0]} .")
+        
+    elif first == "start":
+        if not len(argv) == 1:
+            system("docker run --rm -i -t cuzimclicks/raccoon bash")
+        
+        else:
+            system(f"docker run --rm -i -t {argv[0]} bash")
