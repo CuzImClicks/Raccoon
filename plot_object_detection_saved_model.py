@@ -87,6 +87,7 @@ print('Done! Took {} seconds'.format(elapsed_time))
 
 
 # Load label map data (for plotting)
+# Creates a dictionary of { "1": "person" }
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,
                                                                     use_display_name=True)
 
@@ -114,7 +115,12 @@ def load_image_into_numpy_array(path):
     """
     return np.array(Image.open(path))
 
-def computeAndSaveImages(images: list):
+def computeAndSaveImages(images: list) -> None:
+    """Computes every image in a list of file paths, runs it through tensorflow and draws the boxes on them
+
+    Args:
+        images (list): A list of file paths to the images that are to be computed
+    """
 
     for image_path in images:
         print(f'Running inference for {image_path}... ')
