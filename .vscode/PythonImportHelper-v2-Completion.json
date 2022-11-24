@@ -1,0 +1,438 @@
+[
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "pathlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "tensorflow",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "label_map_util",
+        "importPath": "object_detection.utils",
+        "description": "object_detection.utils",
+        "isExtraImport": true,
+        "detail": "object_detection.utils",
+        "documentation": {}
+    },
+    {
+        "label": "visualization_utils",
+        "importPath": "object_detection.utils",
+        "description": "object_detection.utils",
+        "isExtraImport": true,
+        "detail": "object_detection.utils",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "warnings",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "warnings",
+        "description": "warnings",
+        "detail": "warnings",
+        "documentation": {}
+    },
+    {
+        "label": "smtplib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "smtplib",
+        "description": "smtplib",
+        "detail": "smtplib",
+        "documentation": {}
+    },
+    {
+        "label": "MIMEImage",
+        "importPath": "email.mime.image",
+        "description": "email.mime.image",
+        "isExtraImport": true,
+        "detail": "email.mime.image",
+        "documentation": {}
+    },
+    {
+        "label": "MIMEMultipart",
+        "importPath": "email.mime.multipart",
+        "description": "email.mime.multipart",
+        "isExtraImport": true,
+        "detail": "email.mime.multipart",
+        "documentation": {}
+    },
+    {
+        "label": "cmd",
+        "kind": 2,
+        "importPath": "docker_bridge",
+        "description": "docker_bridge",
+        "peekOfCode": "def cmd(command):\n    if type(command) is str:\n        command = command.split(\" \")\n    return subprocess.check_output(command).decode()\ndef system(command):\n    return os.system(str(command))\ndef get_container_id():\n    return cmd(\"docker ps\").split(\"\\n\")[1][:12]\ncontainer_id = get_container_id()\ndef docker_cp(first, second):",
+        "detail": "docker_bridge",
+        "documentation": {}
+    },
+    {
+        "label": "system",
+        "kind": 2,
+        "importPath": "docker_bridge",
+        "description": "docker_bridge",
+        "peekOfCode": "def system(command):\n    return os.system(str(command))\ndef get_container_id():\n    return cmd(\"docker ps\").split(\"\\n\")[1][:12]\ncontainer_id = get_container_id()\ndef docker_cp(first, second):\n    cmd(f\"docker cp {first} {second}\")\ndef is_int(number):\n    try:\n        number = int(number)",
+        "detail": "docker_bridge",
+        "documentation": {}
+    },
+    {
+        "label": "get_container_id",
+        "kind": 2,
+        "importPath": "docker_bridge",
+        "description": "docker_bridge",
+        "peekOfCode": "def get_container_id():\n    return cmd(\"docker ps\").split(\"\\n\")[1][:12]\ncontainer_id = get_container_id()\ndef docker_cp(first, second):\n    cmd(f\"docker cp {first} {second}\")\ndef is_int(number):\n    try:\n        number = int(number)\n        return True\n    except:",
+        "detail": "docker_bridge",
+        "documentation": {}
+    },
+    {
+        "label": "docker_cp",
+        "kind": 2,
+        "importPath": "docker_bridge",
+        "description": "docker_bridge",
+        "peekOfCode": "def docker_cp(first, second):\n    cmd(f\"docker cp {first} {second}\")\ndef is_int(number):\n    try:\n        number = int(number)\n        return True\n    except:\n        return False\nprint(\"_\" * 20)\nprint(f\"CuzImClicks/Raccoon Docker Bridge\")",
+        "detail": "docker_bridge",
+        "documentation": {}
+    },
+    {
+        "label": "is_int",
+        "kind": 2,
+        "importPath": "docker_bridge",
+        "description": "docker_bridge",
+        "peekOfCode": "def is_int(number):\n    try:\n        number = int(number)\n        return True\n    except:\n        return False\nprint(\"_\" * 20)\nprint(f\"CuzImClicks/Raccoon Docker Bridge\")\nprint(\"\\n\")\nprint(\"\"\"Commands",
+        "detail": "docker_bridge",
+        "documentation": {}
+    },
+    {
+        "label": "container_id",
+        "kind": 5,
+        "importPath": "docker_bridge",
+        "description": "docker_bridge",
+        "peekOfCode": "container_id = get_container_id()\ndef docker_cp(first, second):\n    cmd(f\"docker cp {first} {second}\")\ndef is_int(number):\n    try:\n        number = int(number)\n        return True\n    except:\n        return False\nprint(\"_\" * 20)",
+        "detail": "docker_bridge",
+        "documentation": {}
+    },
+    {
+        "label": "download_images",
+        "kind": 2,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "def download_images():\n    base_url = 'https://garagenparkhalle.de/sites/default/files/Analyse/'\n    filenames = [\"image4.jpg\", \"image5.jpg\", \"image6.jpg\", 'image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg']\n    image_paths = []\n    for filename in filenames:\n        image_path = tf.keras.utils.get_file(fname=filename,\n                                            origin=base_url + filename,\n                                            untar=False)\n        image_path = pathlib.Path(image_path)\n        image_paths.append(str(image_path))",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "download_model",
+        "kind": 2,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "def download_model(model_name, model_date):\n    base_url = 'http://download.tensorflow.org/models/object_detection/tf2/'\n    model_file = model_name + '.tar.gz'\n    model_dir = tf.keras.utils.get_file(fname=model_name,\n                                        origin=base_url + model_date + '/' + model_file,\n                                        untar=True)\n    return str(model_dir)\nMODEL_DATE = '20200711'\nMODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'\nPATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "download_labels",
+        "kind": 2,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "def download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)\n    label_dir = pathlib.Path(label_dir)\n    return str(label_dir)\nLABEL_FILENAME = 'mscoco_label_map.pbtxt'\nPATH_TO_LABELS = download_labels(LABEL_FILENAME)\nprint(\"Downloaded Labels\")",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "load_image_into_numpy_array",
+        "kind": 2,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "def load_image_into_numpy_array(path):\n    \"\"\"Load an image from file into a numpy array.\n    Puts image into numpy array to feed into tensorflow graph.\n    Note that by convention we put it into a numpy array with shape\n    (height, width, channels), where channels=3 for RGB.\n    Args:\n      path: the file path to the image\n    Returns:\n      uint8 numpy array with shape (img_height, img_width, 3)\n    \"\"\"",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "computeAndSaveImages",
+        "kind": 2,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "def computeAndSaveImages(images: list) -> None:\n    \"\"\"Computes every image in a list of file paths, runs it through tensorflow and draws the boxes on them\n    Args:\n        images (list): A list of file paths to the images that are to be computed\n    \"\"\"\n    for image_path in images:\n        print(f'Running inference for {image_path}... ')\n        image_np = load_image_into_numpy_array(image_path)\n        input_tensor = tf.convert_to_tensor(image_np)\n        input_tensor = input_tensor[tf.newaxis, ...]",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ['TF_CPP_MIN_LOG_LEVEL']",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'    # Suppress TensorFlow logging (1)\nimport pathlib\nimport tensorflow as tf\ntf.get_logger().setLevel('ERROR')           # Suppress TensorFlow logging (2)\nprint(\"_\"*20)\nprint(f\"CuzImClicks/Raccoon Image Detection\")\nprint(\"\\n\")\nprint(os.getcwd())\nproduction = bool(os.environ.get(\"PRODUCTION\"))\nprint(f\"production set to: {production}\")",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "production",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "production = bool(os.environ.get(\"PRODUCTION\"))\nprint(f\"production set to: {production}\")\n# Enable GPU dynamic memory allocation\ngpus = tf.config.experimental.list_physical_devices('GPU')\nfor gpu in gpus:\n    tf.config.experimental.set_memory_growth(gpu, True)\ndef download_images():\n    base_url = 'https://garagenparkhalle.de/sites/default/files/Analyse/'\n    filenames = [\"image4.jpg\", \"image5.jpg\", \"image6.jpg\", 'image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg']\n    image_paths = []",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "gpus",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "gpus = tf.config.experimental.list_physical_devices('GPU')\nfor gpu in gpus:\n    tf.config.experimental.set_memory_growth(gpu, True)\ndef download_images():\n    base_url = 'https://garagenparkhalle.de/sites/default/files/Analyse/'\n    filenames = [\"image4.jpg\", \"image5.jpg\", \"image6.jpg\", 'image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg']\n    image_paths = []\n    for filename in filenames:\n        image_path = tf.keras.utils.get_file(fname=filename,\n                                            origin=base_url + filename,",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "#IMAGE_PATHS",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "#IMAGE_PATHS = download_images()\n#print(\"Downloaded Images\")\n# Download and extract model\ndef download_model(model_name, model_date):\n    base_url = 'http://download.tensorflow.org/models/object_detection/tf2/'\n    model_file = model_name + '.tar.gz'\n    model_dir = tf.keras.utils.get_file(fname=model_name,\n                                        origin=base_url + model_date + '/' + model_file,\n                                        untar=True)\n    return str(model_dir)",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_DATE",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "MODEL_DATE = '20200711'\nMODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'\nPATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)\nprint(\"Downloaded Model\")\n# Download labels file\ndef download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_NAME",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "MODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'\nPATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)\nprint(\"Downloaded Model\")\n# Download labels file\ndef download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)\n    label_dir = pathlib.Path(label_dir)",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "PATH_TO_MODEL_DIR",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "PATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)\nprint(\"Downloaded Model\")\n# Download labels file\ndef download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)\n    label_dir = pathlib.Path(label_dir)\n    return str(label_dir)",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "LABEL_FILENAME",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "LABEL_FILENAME = 'mscoco_label_map.pbtxt'\nPATH_TO_LABELS = download_labels(LABEL_FILENAME)\nprint(\"Downloaded Labels\")\n# Load the model\n# Next we load the downloaded model\nimport time\nfrom object_detection.utils import label_map_util\nfrom object_detection.utils import visualization_utils as viz_utils\nPATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + \"/saved_model\"\nprint('Loading model...')",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "PATH_TO_LABELS",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "PATH_TO_LABELS = download_labels(LABEL_FILENAME)\nprint(\"Downloaded Labels\")\n# Load the model\n# Next we load the downloaded model\nimport time\nfrom object_detection.utils import label_map_util\nfrom object_detection.utils import visualization_utils as viz_utils\nPATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + \"/saved_model\"\nprint('Loading model...')\nstart_time = time.time()",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "PATH_TO_SAVED_MODEL",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "PATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + \"/saved_model\"\nprint('Loading model...')\nstart_time = time.time()\ndetect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)\n# Load saved model and build the detection function\n#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "start_time",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "start_time = time.time()\ndetect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)\n# Load saved model and build the detection function\n#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "detect_fn",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "detect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)\n# Load saved model and build the detection function\n#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "#detect_fn",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nprint(f\"Loaded category index\")\nprint(category_index)",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "end_time",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "end_time = time.time()\nelapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nprint(f\"Loaded category index\")\nprint(category_index)\nimport numpy as np",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "elapsed_time",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "elapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nprint(f\"Loaded category index\")\nprint(category_index)\nimport numpy as np\nfrom PIL import Image",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "category_index",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nprint(f\"Loaded category index\")\nprint(category_index)\nimport numpy as np\nfrom PIL import Image\nimport matplotlib.pyplot as plt\nimport warnings\nwarnings.filterwarnings('ignore')   # Suppress Matplotlib warnings\ndef load_image_into_numpy_array(path):",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "msg",
+        "kind": 5,
+        "importPath": "testing",
+        "description": "testing",
+        "peekOfCode": "msg = MIMEMultipart()\nto = \"henrik.hoppe@satrent.de\"\nfr = \"test@test.com\"\nmsg[\"Subject\"] = \"This is a test\"\nmsg[\"To\"] = to\nmsg[\"From\"] = fr\nwith open(\"./new_image10.jpg\", \"rb\") as fp:\n    img = MIMEImage(fp.read())\nmsg.attach(img)\ns = smtplib.SMTP(\"localhost:1025\")",
+        "detail": "testing",
+        "documentation": {}
+    },
+    {
+        "label": "to",
+        "kind": 5,
+        "importPath": "testing",
+        "description": "testing",
+        "peekOfCode": "to = \"henrik.hoppe@satrent.de\"\nfr = \"test@test.com\"\nmsg[\"Subject\"] = \"This is a test\"\nmsg[\"To\"] = to\nmsg[\"From\"] = fr\nwith open(\"./new_image10.jpg\", \"rb\") as fp:\n    img = MIMEImage(fp.read())\nmsg.attach(img)\ns = smtplib.SMTP(\"localhost:1025\")\ns.sendmail(to, [fr], msg.as_string())",
+        "detail": "testing",
+        "documentation": {}
+    },
+    {
+        "label": "fr",
+        "kind": 5,
+        "importPath": "testing",
+        "description": "testing",
+        "peekOfCode": "fr = \"test@test.com\"\nmsg[\"Subject\"] = \"This is a test\"\nmsg[\"To\"] = to\nmsg[\"From\"] = fr\nwith open(\"./new_image10.jpg\", \"rb\") as fp:\n    img = MIMEImage(fp.read())\nmsg.attach(img)\ns = smtplib.SMTP(\"localhost:1025\")\ns.sendmail(to, [fr], msg.as_string())\ns.quit()",
+        "detail": "testing",
+        "documentation": {}
+    },
+    {
+        "label": "msg[\"Subject\"]",
+        "kind": 5,
+        "importPath": "testing",
+        "description": "testing",
+        "peekOfCode": "msg[\"Subject\"] = \"This is a test\"\nmsg[\"To\"] = to\nmsg[\"From\"] = fr\nwith open(\"./new_image10.jpg\", \"rb\") as fp:\n    img = MIMEImage(fp.read())\nmsg.attach(img)\ns = smtplib.SMTP(\"localhost:1025\")\ns.sendmail(to, [fr], msg.as_string())\ns.quit()",
+        "detail": "testing",
+        "documentation": {}
+    },
+    {
+        "label": "msg[\"To\"]",
+        "kind": 5,
+        "importPath": "testing",
+        "description": "testing",
+        "peekOfCode": "msg[\"To\"] = to\nmsg[\"From\"] = fr\nwith open(\"./new_image10.jpg\", \"rb\") as fp:\n    img = MIMEImage(fp.read())\nmsg.attach(img)\ns = smtplib.SMTP(\"localhost:1025\")\ns.sendmail(to, [fr], msg.as_string())\ns.quit()",
+        "detail": "testing",
+        "documentation": {}
+    },
+    {
+        "label": "msg[\"From\"]",
+        "kind": 5,
+        "importPath": "testing",
+        "description": "testing",
+        "peekOfCode": "msg[\"From\"] = fr\nwith open(\"./new_image10.jpg\", \"rb\") as fp:\n    img = MIMEImage(fp.read())\nmsg.attach(img)\ns = smtplib.SMTP(\"localhost:1025\")\ns.sendmail(to, [fr], msg.as_string())\ns.quit()",
+        "detail": "testing",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "testing",
+        "description": "testing",
+        "peekOfCode": "s = smtplib.SMTP(\"localhost:1025\")\ns.sendmail(to, [fr], msg.as_string())\ns.quit()",
+        "detail": "testing",
+        "documentation": {}
+    }
+]
