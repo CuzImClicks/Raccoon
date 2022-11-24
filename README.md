@@ -22,6 +22,9 @@ docker ps
 docker cp <file path> <container id>:<destination path>
 ```
 
+## TensorFlow (no-avx, no-gpu)
+https://github.com/yaroslavvb/tensorflow-community-wheels/issues/217
+
 ## TODO:
 - [ ] train own dataset
 - [x] dockerize for deployment

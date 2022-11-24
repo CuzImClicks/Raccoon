@@ -50,7 +50,8 @@ def download_model(model_name, model_date):
 
 MODEL_DATE = '20200711'
 MODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'
-PATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)
+PATH_TO_MODEL_DIR = "./centernet_hg104_1024x1024_coco17_tpu-32" #download_model(MODEL_NAME, MODEL_DATE)
+print(f"PATH_TO_MODEL_DIR = {PATH_TO_MODEL_DIR}")
 print("Downloaded Model")
 
 # Download labels file
@@ -62,8 +63,8 @@ def download_labels(filename):
     label_dir = pathlib.Path(label_dir)
     return str(label_dir)
 
-LABEL_FILENAME = 'mscoco_label_map.pbtxt'
-PATH_TO_LABELS = download_labels(LABEL_FILENAME)
+LABEL_FILENAME = 'repo/mscoco_label_map.pbtxt'
+PATH_TO_LABELS = "./mscoco_label_map.pbtxt" #download_labels(LABEL_FILENAME)
 print("Downloaded Labels")
 
 # Load the model
