@@ -182,15 +182,25 @@ while True:
             system(f"docker push {argv[0]}")
 
     elif first == "setup":
-
+        if not os.path.exists("repo"):
+            os.mkdir("repo")
         lg.info("Downloading model")
         response = requests.get("http://download.tensorflow.org/models/object_detection/tf2/20200711/centernet_hg104_1024x1024_coco17_tpu-32.tar.gz")
-        with open("repo/centernet_hg104_1024x1024_coco17_tpu-32.tar.gz", "wb") as file:
+        with open("repo/centernet_hg104_1024x1024_coco17_tpu-32.tar.gz", "wb+") as file:
             file.write(response.content)
         lg.info("Downloaded model")
 
         lg.info("Downloading labels")
         response = requests.get("https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/mscoco_label_map.pbtxt")
-        with open("repo/mscoco_label_map.pbtxt", "wb") as file:
+        with open("repo/mscoco_label_map.pbtxt", "wb+") as file:
             file.write(response.content)
         lg.info("Downloaded labels")
+
+        if not os.path.exists("./models"):
+            lg.info("Downloading object detection ")
+            system("git clone https://github.com/tensorflow/models/")
+
+        if not os.path.exists("repo/object_detection"):
+            system("move ./models/research/object_detection/* ./repo/object_detection")
+            system("rmdir /s ./models -y")
+            lg.info("Moved object detection and deleted models folder")
