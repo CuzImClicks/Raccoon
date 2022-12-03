@@ -9,15 +9,18 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'    # Suppress TensorFlow logging (1)
 import pathlib
 import tensorflow as tf
+from Logger import Logger
 
 tf.get_logger().setLevel('ERROR')           # Suppress TensorFlow logging (2)
 
-print("_"*20)
-print(f"CuzImClicks/Raccoon Image Detection")
-print("\n")
-print(os.getcwd())
+lg = Logger(name="ObjectDetection", formatter=Logger.minecraft_formatter)
+
+lg.info("_"*20)
+lg.info(f"CuzImClicks/Raccoon Image Detection")
+lg.info("\n")
+lg.info(os.getcwd())
 production = bool(os.environ.get("PRODUCTION"))
-print(f"production set to: {production}")
+lg.info(f"production set to: {production}")
 
 # Enable GPU dynamic memory allocation
 gpus = tf.config.experimental.list_physical_devices('GPU')
@@ -51,8 +54,8 @@ def download_model(model_name, model_date):
 MODEL_DATE = '20200711'
 MODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'
 PATH_TO_MODEL_DIR = "./centernet_hg104_1024x1024_coco17_tpu-32" #download_model(MODEL_NAME, MODEL_DATE)
-print(f"PATH_TO_MODEL_DIR = {PATH_TO_MODEL_DIR}")
-print("Downloaded Model")
+lg.info(f"PATH_TO_MODEL_DIR = {PATH_TO_MODEL_DIR}")
+lg.info("Downloaded Model")
 
 # Download labels file
 def download_labels(filename):
@@ -65,7 +68,7 @@ def download_labels(filename):
 
 LABEL_FILENAME = 'repo/mscoco_label_map.pbtxt'
 PATH_TO_LABELS = "./mscoco_label_map.pbtxt" #download_labels(LABEL_FILENAME)
-print("Downloaded Labels")
+lg.info("Downloaded Labels")
 
 # Load the model
 # Next we load the downloaded model
@@ -74,7 +77,7 @@ from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as viz_utils
 
 PATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + "/saved_model"
-print('Loading model...')
+lg.info('Loading model...')
 start_time = time.time()
 
 detect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)
@@ -84,7 +87,7 @@ detect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)
 
 end_time = time.time()
 elapsed_time = end_time - start_time
-print('Done! Took {} seconds'.format(elapsed_time))
+lg.info('Done! Took {} seconds'.format(elapsed_time))
 
 
 # Load label map data (for plotting)
@@ -92,8 +95,8 @@ print('Done! Took {} seconds'.format(elapsed_time))
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,
                                                                     use_display_name=True)
 
-print(f"Loaded category index")
-print(category_index)
+lg.info(f"Loaded category index")
+lg.info(category_index)
 
 import numpy as np
 from PIL import Image
@@ -124,7 +127,7 @@ def computeAndSaveImages(images: list) -> None:
     """
 
     for image_path in images:
-        print(f'Running inference for {image_path}... ')
+        lg.info(f'Running inference for {image_path}... ')
 
         image_np = load_image_into_numpy_array(image_path)
 
@@ -145,12 +148,12 @@ def computeAndSaveImages(images: list) -> None:
                 contains_person = True
 
         if not contains_person and production:
-            print(f"No person found in image")
+            lg.warning(f"No person found in image")
             continue
 
         important = {f"{category_index[det]['name']}#{index}": detections["detection_scores"][index] for index, det in enumerate(detections["detection_classes"]) if detections["detection_scores"][index] > 0.3}
-        print(f"Findings for {image_path}")
-        print(important)
+        lg.info(f"Findings for {image_path}")
+        lg.info(important)
         
         image_np_with_detections = image_np.copy()
 
@@ -170,35 +173,35 @@ def computeAndSaveImages(images: list) -> None:
         
         (dirname, filename) = os.path.split(image_path)
         new_image_path = "./output"+'/new_'+filename
-        print(new_image_path)
+        lg.info(new_image_path)
         plt.savefig(new_image_path)
-        print("\n")
+        lg.info("\n")
 
 if __name__ == "__main__":
-    print("Started the listener")
+    lg.info("Started the listener")
     while True:
         try:
             new_files = os.listdir("./input")
             if len(new_files) > 0:
-                print("New files found")
+                lg.info("New files found")
                 new_files = [f"./input/{f}" for f in new_files if f.endswith(".jpg")]
-                print(new_files)
+                lg.info(new_files)
                 computeAndSaveImages(new_files)
                 for f in new_files:
-                    print(f"Deleted the source file for {f}")
+                    lg.info(f"Deleted the source file for {f}")
                     os.remove(f"{f}")
 
-                print("\n"*2)
+                lg.info("\n"*2)
             
             else:
-                print("Waiting for new files")
+                lg.info("Waiting for new files")
 
             time.sleep(10)
 
         except Exception as e:
-            print(e)
+            lg.error(e)
 
-print('Done')
+lg.info('Done')
 plt.show()
 
 

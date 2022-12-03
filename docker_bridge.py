@@ -17,10 +17,10 @@ def system(command):
 
 
 def get_container_id():
-    return cmd("docker ps").split("\n")[1][:12]
-
-
-container_id = get_container_id()
+    try:
+        return cmd("docker ps").split("\n")[1][:12]
+    except Exception as e:
+        print("Docker is not running!")
 
 
 def docker_cp(first, second):
@@ -36,6 +36,7 @@ def is_int(number):
 
 lg = Logger("Docker Bridge", formatter=Logger.minecraft_formatter)
 
+container_id = ""
 
 lg.info("_" * 20)
 lg.info(f"CuzImClicks/Raccoon Docker Bridge")
@@ -61,11 +62,13 @@ while True:
     argv = argv.strip().split(" ")
     first = argv.pop(0)
     if first == "upload":
+        if container_id == "":
+            container_id = get_container_id()
         if argv[0].startswith("https://") and len(argv) == 2:
             response = requests.get(argv[0])
             with open(f"image{argv[1]}.jpg", "wb") as file:
                 file.write(response.content)
-            docker_cp(f"image{argv[1]}.jpg", f"{container_id}:/home/models/research/input")
+            docker_cp(f"image{argv[1]}.jpg", f"{container_id}:/home/models/input")
             lg.info(f"Docker copied image{argv[1]} to container: {container_id}")
             time.sleep(2)
             continue
@@ -84,11 +87,13 @@ while True:
             if not file.endswith(".jpg"):
                 continue
 
-            docker_cp(file, f"{container_id}:/home/models/research/input")
+            docker_cp(file, f"{container_id}:/home/models/input")
             lg.info(f"Docker copied {file} to container: {container_id}")
             time.sleep(2)
 
     elif first == "download":
+        if container_id == "":
+            container_id = get_container_id()
         if not len(argv) == 1:
             lg.info("Usage")
             lg.info("download <number|filepath>")
@@ -101,7 +106,7 @@ while True:
             if not file.startswith("new_"):
                 file = f"new_{file}"
 
-            docker_cp(f"{container_id}:/home/models/research/output/{file}", ".")
+            docker_cp(f"{container_id}:/home/models/output/{file}", ".")
             lg.info(f"Docker copied {file} from container: {container_id}")
             time.sleep(2)
 
@@ -140,6 +145,8 @@ while True:
         lg.info(os.environ)
 
     elif first == "id":
+        if container_id == "":
+            container_id = get_container_id()
         lg.info(container_id)
 
     elif first == "exit":
@@ -147,17 +154,24 @@ while True:
 
     elif first == "compile":
         if not len(argv) == 1:
-            system("docker build -t cuzimclicks/raccoon .")
+            system("docker build -t  cuzimclicks/raccoon . -f Dockerfile")
 
+        elif argv[0].lower() == "edgetpu":
+            system(f"docker build -t cuzimclicks/raccoon . -f Dockerfile_EdgeTPU")
         else:
-            system(f"docker build -t {argv[0]} .")
+            system(f"docker build -t {''.join(argv)} .")
         
     elif first == "start":
         if not len(argv) == 1:
-            system("docker run --rm -i -t cuzimclicks/raccoon bash")
-        
+            system(f"docker run --rm -i -t cuzimclicks/raccoon bash")
+        elif argv[0] == "edgetpu" and len(argv) == 1:
+            del argv[0]
+            lg.info("Running the docker image with EdgeTPU")
+            system(f"docker run --rm -i -t --privileged -v /dev/bus/usb:/dev/bus/usb cuzimclicks/raccoon bash")
         else:
-            system(f"docker run --rm -i -t {argv[0]} bash")
+            system(f"docker run --rm -i -t {''.join(argv)} bash")
+
+        container_id = get_container_id()
 
     elif first == "push":
         lg.warning("Warning you have to be logged in!")
