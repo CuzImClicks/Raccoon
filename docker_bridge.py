@@ -52,6 +52,8 @@ exit                                - exits
 compile                             - build the docker image
 start                               - start the docker image
 push                                - push the docker image to docker hub
+
+setup                               - download model and labels
 """)
 
 while True:
@@ -164,3 +166,17 @@ while True:
 
         else:
             system(f"docker push {argv[0]}")
+
+    elif first == "setup":
+
+        lg.info("Downloading model")
+        response = requests.get("http://download.tensorflow.org/models/object_detection/tf2/20200711/centernet_hg104_1024x1024_coco17_tpu-32.tar.gz")
+        with open("repo/centernet_hg104_1024x1024_coco17_tpu-32.tar.gz", "wb") as file:
+            file.write(response.content)
+        lg.info("Downloaded model")
+
+        lg.info("Downloading labels")
+        response = requests.get("https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/mscoco_label_map.pbtxt")
+        with open("repo/mscoco_label_map.pbtxt", "wb") as file:
+            file.write(response.content)
+        lg.info("Downloaded labels")

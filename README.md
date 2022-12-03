@@ -32,3 +32,19 @@ https://github.com/yaroslavvb/tensorflow-community-wheels/issues/217
 - [x] tensorflow
 - [ ] pr based contributing
 - [ ] discord webhook for results
+
+<details>
+<summary>Links</summary>
+
+### Links
+<details>
+<summary>usbipd</summary>
+
+https://github.com/dorssel/usbipd-win
+https://github.com/dorssel/usbipd-win/wiki/WSL-support
+https://github.com/dorssel/usbipd-win/issues/264
+</details>
+
+
+
+</details>
