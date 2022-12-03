@@ -6,7 +6,7 @@ Object Detection From TF2 Saved Model
 """
 
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'    # Suppress TensorFlow logging (1)
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'    # Suppress TensorFlow logging (1)
 import pathlib
 import tensorflow as tf
 from Logger import Logger
@@ -127,6 +127,7 @@ def computeAndSaveImages(images: list) -> None:
     """
 
     for image_path in images:
+        start_time = time.time()
         lg.info(f'Running inference for {image_path}... ')
 
         image_np = load_image_into_numpy_array(image_path)
@@ -135,7 +136,8 @@ def computeAndSaveImages(images: list) -> None:
         input_tensor = input_tensor[tf.newaxis, ...]
 
         detections = detect_fn(input_tensor)
-
+        end_time = time.time()
+        lg.info(f"Done! Took {end_time - start_time} seconds")
         num_detections = int(detections.pop('num_detections'))
         detections = {key: value[0, :num_detections].numpy()
                     for key, value in detections.items()}
