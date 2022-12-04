@@ -23,6 +23,7 @@ WORKDIR pycoral
 COPY pull.sh .
 COPY push.sh .
 RUN wget https://raw.githubusercontent.com/CuzImClicks/Raccoon/main/Logger.py -P ./examples/
+RUN wget https://raw.githubusercontent.com/google-coral/test_data/master/efficientdet_lite3_512_ptq_edgetpu.tflite -P ./test_data/
 RUN bash examples/install_requirements.sh detect_image.py
 RUN mkdir input
 RUN mkdir output
