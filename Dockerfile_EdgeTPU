@@ -1,8 +1,9 @@
-FROM "tensorflow/tensorflow"
+FROM tensorflow/tensorflow
 
 WORKDIR /home
 
 RUN apt-get -y update
+RUN apt-get -y upgrade
 
 RUN apt-get -y install git usbutils nano wget
 
@@ -16,6 +17,9 @@ RUN python3 -m pip install --upgrade pip
 RUN apt-get install -y python3-pycoral
 
 RUN mkdir coral && cd coral
+
+COPY repo/tensorflow-2.12.0-cp38-cp38-linux_x86_64.whl .
+RUN python -m pip install tensorflow-2.12.0-cp38-cp38-linux_x86_64.whl
 
 RUN git clone https://github.com/CuzImClicks/pycoral ./pycoral # cannot copy -> $'\r': command not found
 RUN cd pycoral
