@@ -181,7 +181,8 @@ class Logger:
         formatted = self.format_text(text, level)
         if self.level.value <= level.value:
             print(formatted)
-            self.fh.save(formatted)
+            if self.fh is not None:
+                self.fh.save(formatted)
 
         if level == Logger.Level.ERROR and self.fh is not None:
             self.fh.create_and_append(formatted, f"{self.fh.directory}/error.log")
