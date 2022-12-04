@@ -31,7 +31,7 @@ class DockerBridge(Cmd):
         self.lg = Logger("DockerBridge", formatter=Logger.minecraft_formatter)
         self.completions = {
             "compile": ["tensorflow", "edgetpu", "compiler"],
-            "start": ["tensorflow", "edgetpu"],
+            "start": ["tensorflow", "edgetpu", "compiler"],
             "push": ["tensorflow", "latest", "edgetpu"],
             "exit": [],
         }
@@ -46,9 +46,9 @@ class DockerBridge(Cmd):
         if line[0] == "tensorflow":
             system(f"docker build -t  {repo} . -f Dockerfile")
         elif line[0] == "edgetpu":
-            system(f"docker build -t {repo}:edgetpu . -f Dockerfile_EdgeTPU)")
+            system(f"docker build -t {repo}:edgetpu . -f Dockerfile_EdgeTPU")
         elif line[0] == "compiler":
-            system(f"docker build -t {repo}:edgetpu_compiler . -f Dockerfile_Compiler)")
+            system(f"docker build -t {repo}:edgetpu_compiler . -f Dockerfile_Compiler")
         else:
             system(f"docker build -t  {repo} .")
 
@@ -62,7 +62,7 @@ class DockerBridge(Cmd):
             self.lg.warning(f"Running the docker image with {Colors.BOLD.value}--privileged{Colors.RESET.value}{Colors.YELLOW.value} flag")
             system(f"docker run --rm -i -t --privileged -v /dev/bus/usb:/dev/bus/usb {repo}:edgetpu bash")
         elif line[0] == "compiler":
-            system(f"docker run --rm -i -t {repo}:edgetpu_compiler bash")
+            system(f"docker run -i -t {repo}:edgetpu_compiler bash")
         else:
             system(f"docker run --rm -i -t {repo} bash")
         self.container_id = get_container_id()
@@ -85,11 +85,11 @@ class DockerBridge(Cmd):
         """Push the Docker image to Docker Hub"""
         self.lg.warning("Warning you have to be logged in!")
         line = [s for s in line.split(" ") if not s == ""]
-        print(line)
         if len(line) == 0 or line[0] == "tensorflow" or line[0] == "latest":
             print("docker push cuzimclicks/raccoon")
             system("docker push cuzimclicks/raccoon")
         elif line[0] == "edgetpu":
+            self.lg.info("Pushing to Tag edgetpu")
             system("docker push cuzimclicks/raccoon:edgetpu")
         else:
             system(f"docker push {''.join(line)}")
