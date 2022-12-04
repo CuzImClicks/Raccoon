@@ -50,11 +50,11 @@ printenv                            - print all environment variables
 id                                  - prints current docker id
 exit                                - exits
 
-compile                             - build the docker image
-start                               - start the docker image
+compile [edgetpu, compiler]                   - build the docker image
+start   [edgetpu, compiler]                   - start the docker image
 push                                - push the docker image to docker hub
 
-setup                               - download model and labels
+setup   [edgetpu]                     - download model and labels
 """)
 
 while True:
@@ -123,14 +123,14 @@ while True:
     elif first == "env":
         lg.warning("Not working")
         continue
-        #if not len(argv) == 2:
+        # if not len(argv) == 2:
         #    print("env <name> <value>")
         #    print("    name - The name of the environment variable")
         #    print("    value - The value of the environment variable")
         #    continue
 
-        #system(f'export {str(argv[0])}="{str(argv[1])}"')
-        #print(f"Set env {str(argv[0])} = {str(argv[1])}")
+        # system(f'export {str(argv[0])}="{str(argv[1])}"')
+        # print(f"Set env {str(argv[0])} = {str(argv[1])}")
 
     elif first == "printenv":
         if len(argv) > 0:
@@ -157,17 +157,22 @@ while True:
             system("docker build -t  cuzimclicks/raccoon . -f Dockerfile")
 
         elif argv[0].lower() == "edgetpu":
-            system(f"docker build -t cuzimclicks/raccoon . -f Dockerfile_EdgeTPU")
+            system(f"docker build -t cuzimclicks/raccoon:edgetpu . -f Dockerfile_EdgeTPU")
+
+        elif argv[0].lower() == "compiler":
+            system(f"docker build -t cuzimclicks/raccoon:edgetpu_compiler . -f Dockerfile_Compiler")
         else:
             system(f"docker build -t {''.join(argv)} .")
-        
+
     elif first == "start":
         if not len(argv) == 1:
             system(f"docker run --rm -i -t cuzimclicks/raccoon bash")
         elif argv[0] == "edgetpu" and len(argv) == 1:
-            del argv[0]
             lg.info("Running the docker image with EdgeTPU")
-            system(f"docker run --rm -i -t --privileged -v /dev/bus/usb:/dev/bus/usb cuzimclicks/raccoon bash")
+            system(f"docker run --rm -i -t --privileged -v /dev/bus/usb:/dev/bus/usb cuzimclicks/raccoon:edgetpu bash")
+        elif argv[0].lower() == "compiler":
+            lg.info("Running the docker image with EdgeTPU Compiler")
+            system(f"docker run --rm -i -t --privileged -v /dev/bus/usb:/dev/bus/usb cuzimclicks/raccoon:edgetpu_compiler bash")
         else:
             system(f"docker run --rm -i -t {''.join(argv)} bash")
 
@@ -178,29 +183,46 @@ while True:
         if not len(argv) == 1:
             system("docker push cuzimclicks/raccoon")
 
+        elif argv[0] == "edgetpu":
+            system("docker push cuzimclicks/raccoon:edgetpu")
+
         else:
             system(f"docker push {argv[0]}")
 
     elif first == "setup":
-        if not os.path.exists("repo"):
-            os.mkdir("repo")
-        lg.info("Downloading model")
-        response = requests.get("http://download.tensorflow.org/models/object_detection/tf2/20200711/centernet_hg104_1024x1024_coco17_tpu-32.tar.gz")
-        with open("repo/centernet_hg104_1024x1024_coco17_tpu-32.tar.gz", "wb+") as file:
-            file.write(response.content)
-        lg.info("Downloaded model")
+        if not len(argv) == 1:
+            if not os.path.exists("repo"):
+                os.mkdir("repo")
+            lg.info("Downloading model")
+            response = requests.get(
+                "http://download.tensorflow.org/models/object_detection/tf2/20200711"
+                "/centernet_hg104_1024x1024_coco17_tpu-32.tar.gz")
+            with open("repo/centernet_hg104_1024x1024_coco17_tpu-32.tar.gz", "wb+") as file:
+                file.write(response.content)
+            lg.info("Downloaded model")
 
-        lg.info("Downloading labels")
-        response = requests.get("https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/mscoco_label_map.pbtxt")
-        with open("repo/mscoco_label_map.pbtxt", "wb+") as file:
-            file.write(response.content)
-        lg.info("Downloaded labels")
+            lg.info("Downloading labels")
+            response = requests.get(
+                "https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data"
+                "/mscoco_label_map.pbtxt")
+            with open("repo/mscoco_label_map.pbtxt", "wb+") as file:
+                file.write(response.content)
+            lg.info("Downloaded labels")
 
-        if not os.path.exists("./models"):
-            lg.info("Downloading object detection ")
-            system("git clone https://github.com/tensorflow/models/")
+            if not os.path.exists("./models"):
+                lg.info("Downloading object detection ")
+                system("git clone https://github.com/tensorflow/models/")
 
-        if not os.path.exists("repo/object_detection"):
-            system("move ./models/research/object_detection/* ./repo/object_detection")
-            system("rmdir /s ./models -y")
-            lg.info("Moved object detection and deleted models folder")
+            if not os.path.exists("repo/object_detection"):
+                system("move ./models/research/object_detection/* ./repo/object_detection")
+                system("rmdir /s ./models -y")
+                lg.info("Moved object detection and deleted models folder")
+
+        elif argv[0].lower() == "edgetpu":
+            continue
+            # if not os.path.exists("repo"):
+            #    os.mkdir("repo")
+            # if not os.path.exists("./pycoral"):
+            #    lg.info("Downloading pycoral")
+            #    system("git clone https://github.com/google-coral/pycoral.git ./repo/pycoral")
+            #    lg.info("Downloaded pycoral")

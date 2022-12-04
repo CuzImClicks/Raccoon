@@ -2,45 +2,29 @@ FROM "tensorflow/tensorflow"
 
 WORKDIR /home
 
-RUN mkdir models
-
-WORKDIR ./models
-
-RUN mkdir input
-RUN mkdir output
-RUN mkdir object_detection
-
 RUN apt-get -y update
 
-RUN apt-get install -y protobuf-compiler python-pil python-lxml
-RUN apt-get -y install git usbutils nano # must be after protobuf
+RUN apt-get -y install git usbutils nano
 
 RUN echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | tee /etc/apt/sources.list.d/coral-edgetpu.list
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN apt-get -y update
 RUN apt-get install -y libedgetpu1-std
 
-
 RUN python3 -m pip install --upgrade pip
 
-RUN pip install matplotlib
 RUN apt-get install -y python3-pycoral
-RUN pip install tflite-runtime
-
-COPY Logger.py .
-
-# Copy resources
-COPY repo/centernet_hg104_1024x1024_coco17_tpu-32 ./centernet_hg104_1024x1024_coco17_tpu-32
-COPY repo/mscoco_label_map.pbtxt .
-COPY repo/object_detection ./object_detection
-COPY plot_object_detection_saved_model.py .
-
-# Run protobuf compiler
-RUN protoc ./object_detection/protos/*.proto --python_out=.
-RUN export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
-
 
 RUN mkdir coral && cd coral
-RUN git clone https://github.com/google-coral/pycoral.git
-WORKDIR ./pycoral
-RUN bash examples/install_requirements.sh classify_image.py
+
+RUN apt-get install git
+
+RUN git clone https://github.com/CuzImClicks/pycoral ./pycoral # cannot copy -> $'\r': command not found
+RUN cd pycoral
+WORKDIR pycoral
+COPY pull.sh .
+COPY push.sh .
+COPY Logger.py ./examples
+RUN bash examples/install_requirements.sh detect_image.py
+RUN mkdir input
+RUN mkdir output
