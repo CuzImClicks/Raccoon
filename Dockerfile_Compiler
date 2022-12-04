@@ -1,9 +1,17 @@
-FROM ubuntu
+FROM tensorflow/tensorflow
 
-RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+RUN apt-get -y update
+RUN apt-get -y upgrade
 
-RUN echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
+RUN apt-get -y install git nano wget curl gnupg
+
+RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+RUN echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | tee /etc/apt/sources.list.d/coral-edgetpu.list
 
 RUN apt-get update
 
-RUN apt-get install edgetpu-compiler wget nano
+RUN apt-get -y install edgetpu-compiler
+RUN python3 -m pip install --upgrade pip
+RUN apt-get install libgl1 libglib2.0-0
+RUN pip install onnx onnxruntime onnxsim onnx-tf torch pandas torchvision opencv-python tqdm matplotlib seaborn scipy tensorflow_probability tensorflow
