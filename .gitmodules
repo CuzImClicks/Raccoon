@@ -1,0 +1,3 @@
+[submodule "pycoral"]
+	path = pycoral
+	url = https://github.com/CuzImClicks/pycoral
