@@ -2,11 +2,12 @@ from cmd import Cmd
 import os
 from Logger import Logger, Colors, FileHandler
 import subprocess
+import re
 
 
 def cmd(command):
     if type(command) is str:
-        command = command.split(" ")
+        command = [cmd for cmd in command.split(" ") if cmd != ""]
 
     return subprocess.check_output(command).decode()
 
@@ -33,6 +34,7 @@ class DockerBridge(Cmd):
             "compile": ["tensorflow", "edgetpu", "compiler"],
             "start": ["tensorflow", "edgetpu", "compiler"],
             "push": ["tensorflow", "latest", "edgetpu"],
+            "list": ["containers", "running"],
             "exit": [],
         }
         self.container_id = get_container_id()
@@ -74,6 +76,16 @@ class DockerBridge(Cmd):
     def do_download(self, line):
         """TODO"""
         ...
+
+    def do_list(self, line):
+        """Lists all docker containers and gives the option to filter them with regex"""
+        line = [s for s in line.split(" ") if not s == ""]
+        mode = '-a' if line[0] == 'containers' else ''
+        if len(line) == 2:
+            search = re.compile(''.join(line[1:]))
+            print("".join([f"{line}\n" for line in cmd(f"docker container ps {mode}").splitlines() if re.search(search, line) or line[0].startswith("CONTAINER ID")]))
+        else:
+            system(f"docker container ps {mode}")
 
     def do_id(self, line):
         """Print the current docker id"""
@@ -125,5 +137,6 @@ class DockerBridge(Cmd):
             return os.listdir(".")
 
 
-my_cmd = DockerBridge()
-my_cmd.cmdloop()
+if __name__ == "__main__":
+    my_cmd = DockerBridge()
+    my_cmd.cmdloop()
