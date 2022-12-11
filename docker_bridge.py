@@ -1,3 +1,4 @@
+import time
 from cmd import Cmd
 import os
 from Logger import Logger, Colors, FileHandler
@@ -57,11 +58,22 @@ class DockerBridge(Cmd):
     def do_start(self, line):
         """Starts the docker image"""
         line = [s for s in line.split(" ") if not s == ""]
-        repo = 'cuzimclicks/raccoon' if len(line) == 1 else ''.join(line[1:])
+        repo = 'cuzimclicks/raccoon' if len(line) == 0 else ''.join(line)
+        containers = [re.split(re.compile("\s+"), line) for line in cmd("docker container ps -a").splitlines()][1:]
+        search = re.compile("".join(line))
+        container = [con for con in containers if re.fullmatch(search, con[-1])]
+        if len(container) > 0:
+            first = container[0]
+            self.lg.info(f"Found {len(container)}/{len(containers)} container(s)")
+            self.lg.info(f"Starting '{first[-1]}' based on image '{first[1]}'")
+            time.sleep(1)
+            system(f"docker start -i {first[0]}")
+            return
         if line[0] == "tensorflow":
             system(f"docker run --rm -i -t {repo} bash")
         elif line[0] == "edgetpu":
-            self.lg.warning(f"Running the docker image with {Colors.BOLD.value}--privileged{Colors.RESET.value}{Colors.YELLOW.value} flag")
+            self.lg.warning(
+                f"Running the docker image with {Colors.BOLD.value}--privileged{Colors.RESET.value}{Colors.YELLOW.value} flag")
             system(f"docker run --rm -i -t --privileged -v /dev/bus/usb:/dev/bus/usb {repo}:edgetpu bash")
         elif line[0] == "compiler":
             system(f"docker run -i -t {repo}:edgetpu_compiler bash")
@@ -83,7 +95,8 @@ class DockerBridge(Cmd):
         mode = '-a' if line[0] == 'containers' else ''
         if len(line) == 2:
             search = re.compile(''.join(line[1:]))
-            print("".join([f"{line}\n" for line in cmd(f"docker container ps {mode}").splitlines() if re.search(search, line) or line[0].startswith("CONTAINER ID")]))
+            print("".join([f"{line}\n" for line in cmd(f"docker container ps {mode}").splitlines() if
+                           re.search(search, line) or line[0].startswith("CONTAINER ID")]))
         else:
             system(f"docker container ps {mode}")
 
@@ -98,7 +111,6 @@ class DockerBridge(Cmd):
         self.lg.warning("Warning you have to be logged in!")
         line = [s for s in line.split(" ") if not s == ""]
         if len(line) == 0 or line[0] == "tensorflow" or line[0] == "latest":
-            print("docker push cuzimclicks/raccoon")
             system("docker push cuzimclicks/raccoon")
         elif line[0] == "edgetpu":
             self.lg.info("Pushing to Tag edgetpu")
