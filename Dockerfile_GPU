@@ -1,0 +1,13 @@
+FROM tensorflow/tensorflow:2.11.0-gpu
+
+WORKDIR /home
+
+RUN mkdir workspace
+
+WORKDIR workspace
+
+RUN apt -y update
+
+RUN apt install -y nano git wget
+
+COPY Logger.py .
