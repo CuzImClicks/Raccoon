@@ -44,7 +44,8 @@ class DockerBridge(Cmd):
         """
         Build the docker image
         """
-        line = line.split(" ")
+        flags = self.parse_flags(line)
+        line = [s for s in line.split(" ") if not s == ""]
         repo = 'cuzimclicks/raccoon' if len(line) == 1 else ''.join(line[1:])
         if line[0] == "tensorflow":
             system(f"docker build -t  {repo} . -f Dockerfile")
@@ -53,21 +54,24 @@ class DockerBridge(Cmd):
         elif line[0] == "compiler":
             system(f"docker build -t {repo}:edgetpu_compiler . -f Dockerfile_Compiler")
         else:
-            system(f"docker build -t  {repo} .")
+            system(f"docker build -t  {repo} . {'' if 'f' not in flags.keys() else '-f ' + flags['f']}")
 
     def do_start(self, line):
         """Starts the docker image"""
+        flags = self.parse_flags(line)
         line = [s for s in line.split(" ") if not s == ""]
-        repo = 'cuzimclicks/raccoon' if len(line) == 0 else ''.join(line)
+        repo = 'cuzimclicks/raccoon' if len(line) == 0 or line[0] in self.completions["start"] else ''.join(line)
         containers = [re.split(re.compile("\s+"), line) for line in cmd("docker container ps -a").splitlines()][1:]
-        search = re.compile("".join(line))
+        search = re.compile("".join(line[1:]))
         container = [con for con in containers if re.fullmatch(search, con[-1])]
+        print(flags)
         if len(container) > 0:
             first = container[0]
             self.lg.info(f"Found {len(container)}/{len(containers)} container(s)")
             self.lg.info(f"Starting '{first[-1]}' based on image '{first[1]}'")
             time.sleep(1)
-            system(f"docker start -i {first[0]}")
+
+            print(f"docker start -i {''.join([flag + ' ' + value for flag, value in flags])} {first[0]}")
             return
         if line[0] == "tensorflow":
             system(f"docker run --rm -i -t {repo} bash")
@@ -78,7 +82,7 @@ class DockerBridge(Cmd):
         elif line[0] == "compiler":
             system(f"docker run -i -t {repo}:edgetpu_compiler bash")
         else:
-            system(f"docker run --rm -i -t {repo} bash")
+            print(f"docker run {''.join([flag + ' ' + value for flag, value in flags])} -i -t {repo} bash")
         self.container_id = get_container_id()
 
     def do_upload(self, line):
@@ -147,6 +151,10 @@ class DockerBridge(Cmd):
             ]
         else:
             return os.listdir(".")
+
+    @staticmethod
+    def parse_flags(string: str) -> dict:
+        return {result[0]: result[1] for result in re.findall(r"(?P<flag>-+\w+) (?P<input>\w+)?", string)}
 
 
 if __name__ == "__main__":
