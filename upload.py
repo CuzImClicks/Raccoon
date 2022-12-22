@@ -10,6 +10,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("file")
 parser.add_argument("--api_key", type=str, required=True)
 parser.add_argument("--project", type=str, required=True)
+parser.add_argument("--sleep", type=float, required=True)
 
 args = parser.parse_args()
 
@@ -40,3 +41,4 @@ def upload(file):
 for index, file in enumerate(files):
     Thread(target=upload, args=[file]).start()
     bar.refresh()
+    time.sleep(args.sleep)
