@@ -1,7 +1,7 @@
 import time
 from cmd import Cmd
 import os
-from Logger import Logger, Colors, FileHandler
+from Logger import Logger, Colors
 import subprocess
 import re
 
@@ -32,13 +32,27 @@ class DockerBridge(Cmd):
         self.prompt = 'docker bridge >>> '
         self.lg = Logger("DockerBridge", formatter=Logger.minecraft_formatter)
         self.completions = {
-            "compile": ["tensorflow", "edgetpu", "compiler"],
-            "start": ["tensorflow", "edgetpu", "compiler"],
-            "push": ["tensorflow", "latest", "edgetpu"],
-            "list": ["containers", "running"],
-            "exit": [],
+            "compile": lambda text: ["tensorflow", "edgetpu", "compiler"],
+            "start": lambda text: ["tensorflow", "edgetpu", "compiler"],
+            "push": lambda text: ["tensorflow", "latest", "edgetpu"],
+            "list": lambda text: ["containers", "running"],
+            "upload": lambda text: os.listdir(".") if text else [
+                file for file in os.listdir(".")
+                if file.startswith(text)
+            ],
+            "exit": lambda text: [],
         }
         self.container_id = get_container_id()
+
+    compile_presets = {
+        "tensorflow": lambda
+            name: f"docker build -t  {name + ':tensorflow' if not name.endswith(':tensorflow') else ''} . -f Dockerfile",
+        "edgetpu": lambda
+            name: f"docker build -t {name + ':tensorflow' if not name.endswith(':edgetpu') else ''} . -f Dockerfile_EdgeTPU",
+        "edgetpu_compiler": lambda
+            name: f"docker build -t {name + ':edgetpu_compiler' if not name.endswith(':edgetpu_compiler') else ''} . -f Dockerfile_Compiler",
+        "gpu": lambda name: f"docker build -t {name + ':gpu' if not name.endswith(':gpu') else ''}"
+    }
 
     def do_compile(self, line):
         """
@@ -56,33 +70,56 @@ class DockerBridge(Cmd):
         else:
             system(f"docker build -t  {repo} . {'' if 'f' not in flags.keys() else '-f ' + flags['f']}")
 
+    start_presets = {
+        "tensorflow": lambda
+            name: f":{name + ':tensorflow' if not name.endswith(':tensorflow') else ''} bash",
+        "edgetpu": lambda
+            name: f"docker run --rm -i -t --privileged -v /dev/bus/usb:/dev/bus/usb {name + ':tensorflow' if not name.endswith(':edgetpu') else ''} bash",
+        "compiler": lambda
+            name: f"docker run -i -t {name + ':edgetpu_compiler' if not name.endswith(':edgetpu_compiler') else ''} bash"
+    }
+
     def do_start(self, line):
         """Starts the docker image"""
-        flags = self.parse_flags(line)
-        line = [s for s in line.split(" ") if not s == ""]
-        repo = 'cuzimclicks/raccoon' if len(line) == 0 or line[0] in self.completions["start"] else ''.join(line)
-        containers = [re.split(re.compile("\s+"), line) for line in cmd("docker container ps -a").splitlines()][1:]
-        search = re.compile("".join(line[1:]))
-        container = [con for con in containers if re.fullmatch(search, con[-1])]
-        print(flags)
-        if len(container) > 0:
-            first = container[0]
-            self.lg.info(f"Found {len(container)}/{len(containers)} container(s)")
-            self.lg.info(f"Starting '{first[-1]}' based on image '{first[1]}'")
-            time.sleep(1)
-
-            print(f"docker start -i {''.join([flag + ' ' + value for flag, value in flags])} {first[0]}")
+        match = re.fullmatch(r"^\s*(?P<name>\S+)(?:\s+(--?[a-zA-Z0-9]+)(?:\s+(\S+))?)*$", line)
+        if not match:
+            self.lg.error(f"Invalid input. Usage: start [tensorflow, edgetpu, compiler]|<name> flags")
             return
-        if line[0] == "tensorflow":
-            system(f"docker run --rm -i -t {repo} bash")
-        elif line[0] == "edgetpu":
-            self.lg.warning(
-                f"Running the docker image with {Colors.BOLD.value}--privileged{Colors.RESET.value}{Colors.YELLOW.value} flag")
-            system(f"docker run --rm -i -t --privileged -v /dev/bus/usb:/dev/bus/usb {repo}:edgetpu bash")
-        elif line[0] == "compiler":
-            system(f"docker run -i -t {repo}:edgetpu_compiler bash")
+        name = match.groupdict()["name"]
+        flags = {flag: value for flag, value in re.findall(r"(?P<flag>--?[a-zA-Z0-9]+)(?:\s+(?P<value>\S+))?", line)}
+        # FIXME using tensorflow
+        # FIXME flags
+        # if name in self.completions["start"] and flags.:
+        if not name:
+            name = "cuzimclicks/raccoon"
+        if flags.get("-p") or flags.get("--preset") or name in self.start_presets.keys():
+            if name in self.start_presets.keys():
+                system(self.start_presets[name](name))
+            else:
+                system(self.start_presets[flags["-p"] if "-p" in flags.keys() else flags["--preset"]](name))
         else:
-            print(f"docker run {''.join([flag + ' ' + value for flag, value in flags])} -i -t {repo} bash")
+            containers = [re.split(re.compile("\s+"), line) for line in cmd("docker container ps -a").splitlines()][1:]
+            search = re.compile("".join([c for c in line.split(" ") if c != ""]))
+            self.lg.info(f"Searching with regex: {search.pattern}")
+            container = [con for con in containers if re.findall(search, "".join([con[-1], con[1]]))]
+            selector = {index + 1: con for index, con in enumerate(container)}
+            print("".join([f"{index} -> {''.join([p + '    ' for p in [con[1], con[-1]]])}\n" for index, con in
+                           selector.items()]))
+            inp = None if len(selector) > 1 else 1
+            while inp is None:
+                try:
+                    inp = input('Selector >>> ')
+                    if inp.lower() == "exit":
+                        return
+                    inp = int(inp)
+                    if inp not in range(1, list(selector.keys())[-1]):
+                        raise ValueError()
+                except ValueError:
+                    self.lg.error(
+                        f"Input must be an integer in the range of ({list(selector.keys())[0]}, {list(selector.keys())[-1]})")
+                    inp = None
+            self.lg.info(f"Starting docker container with name {selector[inp][-1]}")
+            system(f"docker start -i {selector[inp][0]} {''.join([f'{flag} {value}' for flag, value in flags])}")
         self.container_id = get_container_id()
 
     def do_upload(self, line):
@@ -96,13 +133,9 @@ class DockerBridge(Cmd):
     def do_list(self, line):
         """Lists all docker containers and gives the option to filter them with regex"""
         line = [s for s in line.split(" ") if not s == ""]
-        mode = '-a' if line[0] == 'containers' else ''
-        if len(line) == 2:
-            search = re.compile(''.join(line[1:]))
-            print("".join([f"{line}\n" for line in cmd(f"docker container ps {mode}").splitlines() if
-                           re.search(search, line) or line[0].startswith("CONTAINER ID")]))
-        else:
-            system(f"docker container ps {mode}")
+        search = re.compile(''.join(line[1:]))
+        print("".join([f"{line}\n" for line in cmd(f"docker container ps -a").splitlines() if
+                       re.search(search, line) or line[0].startswith("CONTAINER ID")]))
 
     def do_id(self, line):
         """Print the current docker id"""
@@ -134,23 +167,15 @@ class DockerBridge(Cmd):
             setattr(DockerBridge, 'complete_' + k, self.complete_)
 
     def complete_(self, text, line, start_index, end_index):
-        command = line.split(" ", maxsplit=1)[0]
+        line = line.split(" ")
+        command = line[0]
         if text:
             return [
-                cmd for cmd in self.completions[command]
+                cmd for cmd in self.completions[command](text)
                 if cmd.startswith(text)
             ]
         else:
-            return self.completions[command]
-
-    def complete_upload(self, text, line, start_index, end_index):
-        if text:
-            return [
-                file for file in os.listdir(".")
-                if file.startswith(text)
-            ]
-        else:
-            return os.listdir(".")
+            return self.completions[command](text)
 
     @staticmethod
     def parse_flags(string: str) -> dict:
