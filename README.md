@@ -1,23 +1,49 @@
-# Racoon
+# Raccoon Object Detector
+Raccoon is a TensorFlow based application designed to recognize people on video feeds.
+It uses the latest version of TensorFlow and is hosted on a custom Docker system 
+consisting of multiple different Docker images. The object detector is trained on a 
+custom dataset of approximately 1000 annotated images hosted at https://universe.roboflow.com/cuzimclicks/raccoon-qnjzn. 
+The dataset contains three different classes and has been resized to 640x640.
 
-A TensorFlow based application to recognize people on video feeds.
+## Dependencies
+- Docker
 
-# Docker - How to run
+## Installation
+To use Raccoon, you will need to install TensorFlow. You can then clone the repository from GitHub using the following command:
+```
+git clone https://github.com/CuzImClicks/Raccoon.git
+```
+
+## Usage
+To use Raccoon, you will need to provide it with an input image or video stream. The object detector will then return the bounding boxes and labels for any detected objects.
+
+You can run the object detection script using the following command:
+
+```
+python plot_object_detection_saved_model.py
+```
+For more options, you can use the following command to view the available arguments:
+
 ```
 python examples/detect_image.py --help
-usage: detect_image.py [-h] [-m MODEL] [-l LABELS] [-t THRESHOLD] [-c COUNT] [-d] [-a AMOUNT] [-s]
-
-optional arguments:
-    -h, --help                          show this help message and exit
-    -m MODEL, --model MODEL             File path of .tflite file (default:test_data/ssd_mobilenet_v1_coco_quant_postprocess_edgetpu.tflite)
-    -l LABELS, --labels LABELS          File path of labels file (default: test_data/coco_labels.txt)
-    -t THRESHOLD, --threshold THRESHOLD Score threshold for detected objects (default: 0.4)
-    -c COUNT, --count COUNT             Number of times to run inference (default: 1)
-    -a AMOUNT, --amount AMOUNT          Limit the amount of images computed (default: -1)
-    -d, --debug                         Debug output (default: False)
-    -u, --unsafe                        Crashes are not caught (default: False)
-    -s, --save                          Save empty images (default: False)
 ```
+
+## Training
+To train the object detector, you will need to use the custom dataset of annotated images hosted at https://universe.roboflow.com/cuzimclicks/raccoon-qnjzn. This can be done using the TensorFlow training API. Make sure to specify the three different classes and that the images have been resized to 640x640.
+
+## Hosting
+Raccoon can be hosted using a custom Docker system consisting of multiple different Docker images, which are hosted at Docker Hub:
+
+> TensorFlow
+
+The first version of this object detector, which is very accurate but slow on low-performance CPUs/GPUs
+> Edge TPU
+
+the Edge TPU version of this object detector, which is quick but has low accuracy
+> Compiler
+ 
+comes with the Edge TPU compiler preinstalled
+
 <details>
 <summary>Vanilla TensorFlow</summary>
 Build the docker image
@@ -68,6 +94,13 @@ Location of the converted YOLOV7 model
 Location of the security camera alarm images
 >/share/Public/record_nvr_images
 
+## Converting a model to tflite
+```
+tflite_convert --[keras_model_file|saved_model_dir]<input> --output_file=<file>
+```
+
+
+
 
 ## TODO:
 - [ ] train own dataset
@@ -79,6 +112,11 @@ Location of the security camera alarm images
 
 <details>
 <summary>Links</summary>
+
+### Problems
+
+> '${\r' command not found
+-> apt install dos2unix
 
 ### Links
 <details>
