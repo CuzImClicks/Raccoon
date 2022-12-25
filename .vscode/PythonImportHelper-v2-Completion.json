@@ -1,5 +1,119 @@
 [
     {
+        "label": "md5",
+        "importPath": "hashlib",
+        "description": "hashlib",
+        "isExtraImport": true,
+        "detail": "hashlib",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "Counter",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "Iterable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "Cmd",
+        "importPath": "cmd",
+        "description": "cmd",
+        "isExtraImport": true,
+        "detail": "cmd",
+        "documentation": {}
+    },
+    {
+        "label": "Logger",
+        "importPath": "Logger",
+        "description": "Logger",
+        "isExtraImport": true,
+        "detail": "Logger",
+        "documentation": {}
+    },
+    {
+        "label": "Colors",
+        "importPath": "Logger",
+        "description": "Logger",
+        "isExtraImport": true,
+        "detail": "Logger",
+        "documentation": {}
+    },
+    {
+        "label": "FileHandler",
+        "importPath": "Logger",
+        "description": "Logger",
+        "isExtraImport": true,
+        "detail": "Logger",
+        "documentation": {}
+    },
+    {
+        "label": "Logger",
+        "importPath": "Logger",
+        "description": "Logger",
+        "isExtraImport": true,
+        "detail": "Logger",
+        "documentation": {}
+    },
+    {
+        "label": "Logger",
+        "importPath": "Logger",
+        "description": "Logger",
+        "isExtraImport": true,
+        "detail": "Logger",
+        "documentation": {}
+    },
+    {
         "label": "subprocess",
         "kind": 6,
         "isExtraImport": true,
@@ -18,21 +132,21 @@
         "documentation": {}
     },
     {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
         "label": "requests",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "requests",
         "description": "requests",
         "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "readline",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "readline",
+        "description": "readline",
+        "detail": "readline",
         "documentation": {}
     },
     {
@@ -105,6 +219,15 @@
         "documentation": {}
     },
     {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
         "label": "smtplib",
         "kind": 6,
         "isExtraImport": true,
@@ -130,11 +253,1001 @@
         "documentation": {}
     },
     {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day1",
+        "description": "AdventOfCode.2015.day1",
+        "peekOfCode": "items = open(\"D:/GitHub Repos/AdventOfCode/inputs/2015/day1.txt\", \"r\").read()\nword = []\nfloor = 0\nfor item in [char for char in items]:\n    if floor == -1:\n        break\n    word.append(item)\n    if item == \"(\":\n        floor += 1\n    if item == \")\":",
+        "detail": "AdventOfCode.2015.day1",
+        "documentation": {}
+    },
+    {
+        "label": "word",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day1",
+        "description": "AdventOfCode.2015.day1",
+        "peekOfCode": "word = []\nfloor = 0\nfor item in [char for char in items]:\n    if floor == -1:\n        break\n    word.append(item)\n    if item == \"(\":\n        floor += 1\n    if item == \")\":\n        floor -= 1",
+        "detail": "AdventOfCode.2015.day1",
+        "documentation": {}
+    },
+    {
+        "label": "floor",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day1",
+        "description": "AdventOfCode.2015.day1",
+        "peekOfCode": "floor = 0\nfor item in [char for char in items]:\n    if floor == -1:\n        break\n    word.append(item)\n    if item == \"(\":\n        floor += 1\n    if item == \")\":\n        floor -= 1\nprint(len(word))",
+        "detail": "AdventOfCode.2015.day1",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day2",
+        "description": "AdventOfCode.2015.day2",
+        "peekOfCode": "items = open(\"D:/GitHub Repos/AdventOfCode/inputs/2015/day2.txt\", \"r\").read().splitlines()\ntotal = 0\nfor item in items:\n    w, h, l = item.split(\"x\")\n    w, h, l = int(w), int(h), int(l)\n    wrap = 2*min(w+h, w+l, l+h)\n    bow = w * h * l\n    total += wrap + bow\nprint(total)",
+        "detail": "AdventOfCode.2015.day2",
+        "documentation": {}
+    },
+    {
+        "label": "total",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day2",
+        "description": "AdventOfCode.2015.day2",
+        "peekOfCode": "total = 0\nfor item in items:\n    w, h, l = item.split(\"x\")\n    w, h, l = int(w), int(h), int(l)\n    wrap = 2*min(w+h, w+l, l+h)\n    bow = w * h * l\n    total += wrap + bow\nprint(total)",
+        "detail": "AdventOfCode.2015.day2",
+        "documentation": {}
+    },
+    {
+        "label": "count",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day3",
+        "description": "AdventOfCode.2015.day3",
+        "peekOfCode": "count = 0\nitems = open(\"D:/GitHub Repos/AdventOfCode/inputs/2015/day3.txt\", \"r\").read()\nitems = [char for char in items]\ncoords = {}\nglobal coord\ncoord = {\"x\": 0, \"y\": 0}\nfor item in items:\n    count += 1\n    print(\"\\rMoves: \" + str(count), end=\"\")\n    if item == \"^\":",
+        "detail": "AdventOfCode.2015.day3",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day3",
+        "description": "AdventOfCode.2015.day3",
+        "peekOfCode": "items = open(\"D:/GitHub Repos/AdventOfCode/inputs/2015/day3.txt\", \"r\").read()\nitems = [char for char in items]\ncoords = {}\nglobal coord\ncoord = {\"x\": 0, \"y\": 0}\nfor item in items:\n    count += 1\n    print(\"\\rMoves: \" + str(count), end=\"\")\n    if item == \"^\":\n        coord[\"y\"] += 1",
+        "detail": "AdventOfCode.2015.day3",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day3",
+        "description": "AdventOfCode.2015.day3",
+        "peekOfCode": "items = [char for char in items]\ncoords = {}\nglobal coord\ncoord = {\"x\": 0, \"y\": 0}\nfor item in items:\n    count += 1\n    print(\"\\rMoves: \" + str(count), end=\"\")\n    if item == \"^\":\n        coord[\"y\"] += 1\n    elif item == \">\":",
+        "detail": "AdventOfCode.2015.day3",
+        "documentation": {}
+    },
+    {
+        "label": "coords",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day3",
+        "description": "AdventOfCode.2015.day3",
+        "peekOfCode": "coords = {}\nglobal coord\ncoord = {\"x\": 0, \"y\": 0}\nfor item in items:\n    count += 1\n    print(\"\\rMoves: \" + str(count), end=\"\")\n    if item == \"^\":\n        coord[\"y\"] += 1\n    elif item == \">\":\n        coord[\"x\"] += 1",
+        "detail": "AdventOfCode.2015.day3",
+        "documentation": {}
+    },
+    {
+        "label": "coord",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day3",
+        "description": "AdventOfCode.2015.day3",
+        "peekOfCode": "coord = {\"x\": 0, \"y\": 0}\nfor item in items:\n    count += 1\n    print(\"\\rMoves: \" + str(count), end=\"\")\n    if item == \"^\":\n        coord[\"y\"] += 1\n    elif item == \">\":\n        coord[\"x\"] += 1\n    elif item == \"v\":\n        coord[\"y\"] -= 1",
+        "detail": "AdventOfCode.2015.day3",
+        "documentation": {}
+    },
+    {
+        "label": "m",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day4",
+        "description": "AdventOfCode.2015.day4",
+        "peekOfCode": "m = md5()\nx = 0\nwhile True:\n    msg = f\"ckczppom{x}\"\n    hash = md5(msg.encode()).hexdigest()\n    print(f\"{x} {msg} - {hash}\")\n    if hash.startswith(\"000000\"):\n        print(\"\\n\\n\")\n        break\n    x += 1",
+        "detail": "AdventOfCode.2015.day4",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day4",
+        "description": "AdventOfCode.2015.day4",
+        "peekOfCode": "x = 0\nwhile True:\n    msg = f\"ckczppom{x}\"\n    hash = md5(msg.encode()).hexdigest()\n    print(f\"{x} {msg} - {hash}\")\n    if hash.startswith(\"000000\"):\n        print(\"\\n\\n\")\n        break\n    x += 1",
+        "detail": "AdventOfCode.2015.day4",
+        "documentation": {}
+    },
+    {
+        "label": "is_nice",
+        "kind": 2,
+        "importPath": "AdventOfCode.2015.day5",
+        "description": "AdventOfCode.2015.day5",
+        "peekOfCode": "def is_nice(s):\n    vowels = 0\n    for c in s:\n        if c in 'aeiou':\n            vowels += 1\n        if vowels >= 3:\n            break\n    if vowels < 3:\n        return False\n    repeat = False",
+        "detail": "AdventOfCode.2015.day5",
+        "documentation": {}
+    },
+    {
+        "label": "is_really_nice",
+        "kind": 2,
+        "importPath": "AdventOfCode.2015.day5",
+        "description": "AdventOfCode.2015.day5",
+        "peekOfCode": "def is_really_nice(s):\n    first = False\n    for i in range(len(s) - 3):\n        sub = s[i: i + 2]\n        if sub in s[i + 2:]:\n            first = True\n            print(\"{} is really nice and repeats with {}\".format(s, sub))\n            break\n    if not first:\n        return False",
+        "detail": "AdventOfCode.2015.day5",
+        "documentation": {}
+    },
+    {
+        "label": "input_string",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day5",
+        "description": "AdventOfCode.2015.day5",
+        "peekOfCode": "input_string = open(\"D:/GitHub Repos/AdventOfCode/inputs/2015/day5.txt\", \"r\").read()\ndef is_nice(s):\n    vowels = 0\n    for c in s:\n        if c in 'aeiou':\n            vowels += 1\n        if vowels >= 3:\n            break\n    if vowels < 3:\n        return False",
+        "detail": "AdventOfCode.2015.day5",
+        "documentation": {}
+    },
+    {
+        "label": "count1",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day5",
+        "description": "AdventOfCode.2015.day5",
+        "peekOfCode": "count1 = 0\ncount2 = 0\nfor s in input_string.split('\\n'):\n    if is_nice(s):\n        count1 += 1\n    if is_really_nice(s):\n        count2 += 1\nprint(count1)\nprint(count2)",
+        "detail": "AdventOfCode.2015.day5",
+        "documentation": {}
+    },
+    {
+        "label": "count2",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day5",
+        "description": "AdventOfCode.2015.day5",
+        "peekOfCode": "count2 = 0\nfor s in input_string.split('\\n'):\n    if is_nice(s):\n        count1 += 1\n    if is_really_nice(s):\n        count2 += 1\nprint(count1)\nprint(count2)",
+        "detail": "AdventOfCode.2015.day5",
+        "documentation": {}
+    },
+    {
+        "label": "OFF",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day6",
+        "description": "AdventOfCode.2015.day6",
+        "peekOfCode": "OFF = 0\nON = 1\nTOGGLE = 2\nprocessed = []\nwith open(\"D:/GitHub Repos/AdventOfCode/inputs/2015/day6.txt\", \"r\") as file:\n    for line in file.readlines():\n        line = line.strip()\n        line = line.replace(' through ', '), (')+')'\n        line = line.replace('turn on ', str(ON)+', (')\n        line = line.replace('turn off ', str(OFF)+', (')",
+        "detail": "AdventOfCode.2015.day6",
+        "documentation": {}
+    },
+    {
+        "label": "ON",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day6",
+        "description": "AdventOfCode.2015.day6",
+        "peekOfCode": "ON = 1\nTOGGLE = 2\nprocessed = []\nwith open(\"D:/GitHub Repos/AdventOfCode/inputs/2015/day6.txt\", \"r\") as file:\n    for line in file.readlines():\n        line = line.strip()\n        line = line.replace(' through ', '), (')+')'\n        line = line.replace('turn on ', str(ON)+', (')\n        line = line.replace('turn off ', str(OFF)+', (')\n        line = line.replace('toggle ', str(TOGGLE)+', (')",
+        "detail": "AdventOfCode.2015.day6",
+        "documentation": {}
+    },
+    {
+        "label": "TOGGLE",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day6",
+        "description": "AdventOfCode.2015.day6",
+        "peekOfCode": "TOGGLE = 2\nprocessed = []\nwith open(\"D:/GitHub Repos/AdventOfCode/inputs/2015/day6.txt\", \"r\") as file:\n    for line in file.readlines():\n        line = line.strip()\n        line = line.replace(' through ', '), (')+')'\n        line = line.replace('turn on ', str(ON)+', (')\n        line = line.replace('turn off ', str(OFF)+', (')\n        line = line.replace('toggle ', str(TOGGLE)+', (')\n        processed.append(eval(line))",
+        "detail": "AdventOfCode.2015.day6",
+        "documentation": {}
+    },
+    {
+        "label": "processed",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day6",
+        "description": "AdventOfCode.2015.day6",
+        "peekOfCode": "processed = []\nwith open(\"D:/GitHub Repos/AdventOfCode/inputs/2015/day6.txt\", \"r\") as file:\n    for line in file.readlines():\n        line = line.strip()\n        line = line.replace(' through ', '), (')+')'\n        line = line.replace('turn on ', str(ON)+', (')\n        line = line.replace('turn off ', str(OFF)+', (')\n        line = line.replace('toggle ', str(TOGGLE)+', (')\n        processed.append(eval(line))\ngrid = {}",
+        "detail": "AdventOfCode.2015.day6",
+        "documentation": {}
+    },
+    {
+        "label": "grid",
+        "kind": 5,
+        "importPath": "AdventOfCode.2015.day6",
+        "description": "AdventOfCode.2015.day6",
+        "peekOfCode": "grid = {}\nfor n in range(0, 1000):\n    for i in range(0, 1000):\n        grid[(n, i)] = 0\nfor value, start, end in processed:\n    width = end[0] - start[0]\n    height = end[1] - start[1]\n    '''\n    for w in range(0, width+1):\n        for h in range(0, height+1):",
+        "detail": "AdventOfCode.2015.day6",
+        "documentation": {}
+    },
+    {
+        "label": "valid_pwd",
+        "kind": 5,
+        "importPath": "AdventOfCode.2019.day1",
+        "description": "AdventOfCode.2019.day1",
+        "peekOfCode": "valid_pwd = 0\nfor i in range(206938, 679128):\n    word = str(i)\n    prev = 0\n    valid = True\n    double = False\n    for char in word:\n        one, two, three, four, five, six = [char for char in word]\n        if one <= two <= three <= four <= five <= six:\n            valid = True",
+        "detail": "AdventOfCode.2019.day1",
+        "documentation": {}
+    },
+    {
+        "label": "one",
+        "kind": 2,
+        "importPath": "AdventOfCode.2020.day1",
+        "description": "AdventOfCode.2020.day1",
+        "peekOfCode": "def one(first, second):\n    amount = int(first) + int(second)\n    if amount == 2020:\n        print(f\"{first} + {second} = {amount}\")\n        two(first, second)\ndef two(first, second):\n    print(f\"{first} * {second} = {first*second}\")\nfor item in items:\n    for item2 in items:\n        one(int(item), int(item2))",
+        "detail": "AdventOfCode.2020.day1",
+        "documentation": {}
+    },
+    {
+        "label": "two",
+        "kind": 2,
+        "importPath": "AdventOfCode.2020.day1",
+        "description": "AdventOfCode.2020.day1",
+        "peekOfCode": "def two(first, second):\n    print(f\"{first} * {second} = {first*second}\")\nfor item in items:\n    for item2 in items:\n        one(int(item), int(item2))",
+        "detail": "AdventOfCode.2020.day1",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day1",
+        "description": "AdventOfCode.2020.day1",
+        "peekOfCode": "items = open(\"D:/GitHub Repos/AdventOfCode/inputs/2020/day1.txt\", \"r\").read().split(\",\")\ndef one(first, second):\n    amount = int(first) + int(second)\n    if amount == 2020:\n        print(f\"{first} + {second} = {amount}\")\n        two(first, second)\ndef two(first, second):\n    print(f\"{first} * {second} = {first*second}\")\nfor item in items:\n    for item2 in items:",
+        "detail": "AdventOfCode.2020.day1",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day2",
+        "description": "AdventOfCode.2020.day2",
+        "peekOfCode": "items = open(\"D:/GitHub Repos/AdventOfCode/inputs/2020/day2.txt\", \"r\").read().splitlines()\nvalid = 0\ntotal = 0\nfor line in items:\n    pwd = line.split(\" \")\n    if len(pwd) == 0:\n        pass\n    elif len(pwd) == 3:\n        amount = pwd[0].split(\"-\")\n        letter = pwd[1][0]",
+        "detail": "AdventOfCode.2020.day2",
+        "documentation": {}
+    },
+    {
+        "label": "valid",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day2",
+        "description": "AdventOfCode.2020.day2",
+        "peekOfCode": "valid = 0\ntotal = 0\nfor line in items:\n    pwd = line.split(\" \")\n    if len(pwd) == 0:\n        pass\n    elif len(pwd) == 3:\n        amount = pwd[0].split(\"-\")\n        letter = pwd[1][0]\n        word = pwd[2]",
+        "detail": "AdventOfCode.2020.day2",
+        "documentation": {}
+    },
+    {
+        "label": "total",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day2",
+        "description": "AdventOfCode.2020.day2",
+        "peekOfCode": "total = 0\nfor line in items:\n    pwd = line.split(\" \")\n    if len(pwd) == 0:\n        pass\n    elif len(pwd) == 3:\n        amount = pwd[0].split(\"-\")\n        letter = pwd[1][0]\n        word = pwd[2]\n        letters = {}",
+        "detail": "AdventOfCode.2020.day2",
+        "documentation": {}
+    },
+    {
+        "label": "get_trees",
+        "kind": 2,
+        "importPath": "AdventOfCode.2020.day3",
+        "description": "AdventOfCode.2020.day3",
+        "peekOfCode": "def get_trees(dx, dy) -> int:\n    with open(\"../inputs/2020/day3.txt\") as f:\n        v = [x for x in f.read().splitlines()[::dy]]\n    trees = 0\n    x = 0\n    for y in v:\n        trees += (y[x % len(v[0])] == \"#\")\n        x += dx\n    return trees\ndef task_1():",
+        "detail": "AdventOfCode.2020.day3",
+        "documentation": {}
+    },
+    {
+        "label": "task_1",
+        "kind": 2,
+        "importPath": "AdventOfCode.2020.day3",
+        "description": "AdventOfCode.2020.day3",
+        "peekOfCode": "def task_1():\n    print(get_trees(3, 1))\ndef task_2():\n    to_calc = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]\n    total = []\n    for tup in to_calc:\n        total.append(get_trees(tup[0], tup[1]))\n    print(math.prod(total))\ntask_1()\ntask_2()",
+        "detail": "AdventOfCode.2020.day3",
+        "documentation": {}
+    },
+    {
+        "label": "task_2",
+        "kind": 2,
+        "importPath": "AdventOfCode.2020.day3",
+        "description": "AdventOfCode.2020.day3",
+        "peekOfCode": "def task_2():\n    to_calc = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]\n    total = []\n    for tup in to_calc:\n        total.append(get_trees(tup[0], tup[1]))\n    print(math.prod(total))\ntask_1()\ntask_2()",
+        "detail": "AdventOfCode.2020.day3",
+        "documentation": {}
+    },
+    {
+        "label": "deal_with_item",
+        "kind": 2,
+        "importPath": "AdventOfCode.2020.day4",
+        "description": "AdventOfCode.2020.day4",
+        "peekOfCode": "def deal_with_item(item):\n    infos = []\n    for index, i in enumerate(item):\n        item[index] = str(i).replace(\"\\n\", \"\")\n        for part in item[index].split(\" \"):\n            infos.append(part)\n    keys = []\n    for info in infos:\n        splitted = str(info).split(\" \")\n        for part in splitted:",
+        "detail": "AdventOfCode.2020.day4",
+        "documentation": {}
+    },
+    {
+        "label": "solve",
+        "kind": 2,
+        "importPath": "AdventOfCode.2020.day4",
+        "description": "AdventOfCode.2020.day4",
+        "peekOfCode": "def solve(inp):\n    inp = inp.split(\"\\n\\n\")\n    fields = [\"byr\", \"iyr\", \"eyr\", \"hgt\", \"hcl\", \"ecl\", \"pid\"]\n    def check1(entry):\n        return all(field + \":\" in entry for field in fields)\n    part1 = sum(check1(x) for x in inp)\n    def inrange(value, lo, hi):\n        return value.isnumeric() and lo <= int(value) <= hi\n    def check2(entry):\n        for f in entry.replace(\"\\n\", \" \").split():",
+        "detail": "AdventOfCode.2020.day4",
+        "documentation": {}
+    },
+    {
+        "label": "passports",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day4",
+        "description": "AdventOfCode.2020.day4",
+        "peekOfCode": "passports = open(\"../inputs/2020/day4.txt\", \"r\").read()\nfields = [\"byr\", \"iyr\", \"eyr\", \"hgt\", \"hcl\", \"ecl\", \"pid\"]\nvalid = 0\npart1 = lambda passport: all(field in passport for field in fields)\npart2 = lambda entry: entry.replace(\"\\n\", \" \").split(\" \")\ndef deal_with_item(item):\n    infos = []\n    for index, i in enumerate(item):\n        item[index] = str(i).replace(\"\\n\", \"\")\n        for part in item[index].split(\" \"):",
+        "detail": "AdventOfCode.2020.day4",
+        "documentation": {}
+    },
+    {
+        "label": "fields",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day4",
+        "description": "AdventOfCode.2020.day4",
+        "peekOfCode": "fields = [\"byr\", \"iyr\", \"eyr\", \"hgt\", \"hcl\", \"ecl\", \"pid\"]\nvalid = 0\npart1 = lambda passport: all(field in passport for field in fields)\npart2 = lambda entry: entry.replace(\"\\n\", \" \").split(\" \")\ndef deal_with_item(item):\n    infos = []\n    for index, i in enumerate(item):\n        item[index] = str(i).replace(\"\\n\", \"\")\n        for part in item[index].split(\" \"):\n            infos.append(part)",
+        "detail": "AdventOfCode.2020.day4",
+        "documentation": {}
+    },
+    {
+        "label": "valid",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day4",
+        "description": "AdventOfCode.2020.day4",
+        "peekOfCode": "valid = 0\npart1 = lambda passport: all(field in passport for field in fields)\npart2 = lambda entry: entry.replace(\"\\n\", \" \").split(\" \")\ndef deal_with_item(item):\n    infos = []\n    for index, i in enumerate(item):\n        item[index] = str(i).replace(\"\\n\", \"\")\n        for part in item[index].split(\" \"):\n            infos.append(part)\n    keys = []",
+        "detail": "AdventOfCode.2020.day4",
+        "documentation": {}
+    },
+    {
+        "label": "part1",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day4",
+        "description": "AdventOfCode.2020.day4",
+        "peekOfCode": "part1 = lambda passport: all(field in passport for field in fields)\npart2 = lambda entry: entry.replace(\"\\n\", \" \").split(\" \")\ndef deal_with_item(item):\n    infos = []\n    for index, i in enumerate(item):\n        item[index] = str(i).replace(\"\\n\", \"\")\n        for part in item[index].split(\" \"):\n            infos.append(part)\n    keys = []\n    for info in infos:",
+        "detail": "AdventOfCode.2020.day4",
+        "documentation": {}
+    },
+    {
+        "label": "part2",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day4",
+        "description": "AdventOfCode.2020.day4",
+        "peekOfCode": "part2 = lambda entry: entry.replace(\"\\n\", \" \").split(\" \")\ndef deal_with_item(item):\n    infos = []\n    for index, i in enumerate(item):\n        item[index] = str(i).replace(\"\\n\", \"\")\n        for part in item[index].split(\" \"):\n            infos.append(part)\n    keys = []\n    for info in infos:\n        splitted = str(info).split(\" \")",
+        "detail": "AdventOfCode.2020.day4",
+        "documentation": {}
+    },
+    {
+        "label": "solve",
+        "kind": 2,
+        "importPath": "AdventOfCode.2020.day5",
+        "description": "AdventOfCode.2020.day5",
+        "peekOfCode": "def solve(item):\n    letters = [char for char in item]\n    rows = letters[:-3]\n    seats = list(item[-3:])\n    row = 0\n    turn = 1\n    for letter in rows:\n        if letter == \"F\":\n            row += 0\n            turn += 1",
+        "detail": "AdventOfCode.2020.day5",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day5",
+        "description": "AdventOfCode.2020.day5",
+        "peekOfCode": "items = open(\"../inputs/2020/day5.txt\", \"r\").readlines()\ncalculate_seat_id = lambda row, seat: row * 8 + seat\ndef solve(item):\n    letters = [char for char in item]\n    rows = letters[:-3]\n    seats = list(item[-3:])\n    row = 0\n    turn = 1\n    for letter in rows:\n        if letter == \"F\":",
+        "detail": "AdventOfCode.2020.day5",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_seat_id",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day5",
+        "description": "AdventOfCode.2020.day5",
+        "peekOfCode": "calculate_seat_id = lambda row, seat: row * 8 + seat\ndef solve(item):\n    letters = [char for char in item]\n    rows = letters[:-3]\n    seats = list(item[-3:])\n    row = 0\n    turn = 1\n    for letter in rows:\n        if letter == \"F\":\n            row += 0",
+        "detail": "AdventOfCode.2020.day5",
+        "documentation": {}
+    },
+    {
+        "label": "seat_ids",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day5",
+        "description": "AdventOfCode.2020.day5",
+        "peekOfCode": "seat_ids = []\nfor item in items:\n    item = item.replace(\"\\n\", \"\")\n    seat_ids.append(solve(item))\nsorted_ids = sorted(seat_ids)\nfor index, entry in enumerate(sorted_ids):\n    try:\n        if int(sorted_ids[index]) + 1 == int(sorted_ids[index + 1]) - 1:\n            print(sorted_ids[index] + 1)\n    except IndexError:",
+        "detail": "AdventOfCode.2020.day5",
+        "documentation": {}
+    },
+    {
+        "label": "sorted_ids",
+        "kind": 5,
+        "importPath": "AdventOfCode.2020.day5",
+        "description": "AdventOfCode.2020.day5",
+        "peekOfCode": "sorted_ids = sorted(seat_ids)\nfor index, entry in enumerate(sorted_ids):\n    try:\n        if int(sorted_ids[index]) + 1 == int(sorted_ids[index + 1]) - 1:\n            print(sorted_ids[index] + 1)\n    except IndexError:\n        pass",
+        "detail": "AdventOfCode.2020.day5",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day1",
+        "description": "AdventOfCode.2021.day1",
+        "peekOfCode": "items = [int(item) for item in open(\"../inputs/2021/day1.txt\", \"r\", encoding=\"UTF-8\").readlines()]\n# --- Part One ---\nprint(\" --- Part One ---\")\nprint(len([item for index, item in enumerate(items) if item > items[index - 1] and index - 1 >= 0]))\n# --- Part Two ---\nprint(\" --- Part Two ---\")\nwindows = [sum(items[index:index + 3]) for index in range(0, len(items))]\nprint(len([window for index, window in enumerate(windows) if window > windows[index -1] and index - 1 >= 0]))",
+        "detail": "AdventOfCode.2021.day1",
+        "documentation": {}
+    },
+    {
+        "label": "windows",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day1",
+        "description": "AdventOfCode.2021.day1",
+        "peekOfCode": "windows = [sum(items[index:index + 3]) for index in range(0, len(items))]\nprint(len([window for index, window in enumerate(windows) if window > windows[index -1] and index - 1 >= 0]))",
+        "detail": "AdventOfCode.2021.day1",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day10",
+        "description": "AdventOfCode.2021.day10",
+        "peekOfCode": "items = [[char for char in line] for line in open(\"../inputs/2021/day10.txt\", \"r\").read().split(\"\\n\")]\nmappings = {\"(\": \")\", \"[\": \"]\", \"{\": \"}\", \"<\": \">\"}\nscores = {\")\": 3, \"]\": 57, \"}\": 1197, \">\": 25137}\ninvalid_chars = []\ninvalid_lines = []\nincomplete_lines = {}\nfor index, line in enumerate(items):\n    current_openings = []\n    for char in line:\n        if char in mappings.keys():",
+        "detail": "AdventOfCode.2021.day10",
+        "documentation": {}
+    },
+    {
+        "label": "mappings",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day10",
+        "description": "AdventOfCode.2021.day10",
+        "peekOfCode": "mappings = {\"(\": \")\", \"[\": \"]\", \"{\": \"}\", \"<\": \">\"}\nscores = {\")\": 3, \"]\": 57, \"}\": 1197, \">\": 25137}\ninvalid_chars = []\ninvalid_lines = []\nincomplete_lines = {}\nfor index, line in enumerate(items):\n    current_openings = []\n    for char in line:\n        if char in mappings.keys():\n            current_openings.append(char)",
+        "detail": "AdventOfCode.2021.day10",
+        "documentation": {}
+    },
+    {
+        "label": "scores",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day10",
+        "description": "AdventOfCode.2021.day10",
+        "peekOfCode": "scores = {\")\": 3, \"]\": 57, \"}\": 1197, \">\": 25137}\ninvalid_chars = []\ninvalid_lines = []\nincomplete_lines = {}\nfor index, line in enumerate(items):\n    current_openings = []\n    for char in line:\n        if char in mappings.keys():\n            current_openings.append(char)\n            continue",
+        "detail": "AdventOfCode.2021.day10",
+        "documentation": {}
+    },
+    {
+        "label": "invalid_chars",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day10",
+        "description": "AdventOfCode.2021.day10",
+        "peekOfCode": "invalid_chars = []\ninvalid_lines = []\nincomplete_lines = {}\nfor index, line in enumerate(items):\n    current_openings = []\n    for char in line:\n        if char in mappings.keys():\n            current_openings.append(char)\n            continue\n        if char != mappings[current_openings[-1]]:",
+        "detail": "AdventOfCode.2021.day10",
+        "documentation": {}
+    },
+    {
+        "label": "invalid_lines",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day10",
+        "description": "AdventOfCode.2021.day10",
+        "peekOfCode": "invalid_lines = []\nincomplete_lines = {}\nfor index, line in enumerate(items):\n    current_openings = []\n    for char in line:\n        if char in mappings.keys():\n            current_openings.append(char)\n            continue\n        if char != mappings[current_openings[-1]]:\n            invalid_chars.append(char)",
+        "detail": "AdventOfCode.2021.day10",
+        "documentation": {}
+    },
+    {
+        "label": "incomplete_lines",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day10",
+        "description": "AdventOfCode.2021.day10",
+        "peekOfCode": "incomplete_lines = {}\nfor index, line in enumerate(items):\n    current_openings = []\n    for char in line:\n        if char in mappings.keys():\n            current_openings.append(char)\n            continue\n        if char != mappings[current_openings[-1]]:\n            invalid_chars.append(char)\n            invalid_lines.append(line)",
+        "detail": "AdventOfCode.2021.day10",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day2",
+        "description": "AdventOfCode.2021.day2",
+        "peekOfCode": "items = [item.split(\" \") for item in open(\"../inputs/2021/day2.txt\", \"r\", encoding=\"UTF-8\").readlines()]\n# --- Part One ---\nprint(\" --- Part One ---\")\npos = 0 \ndepth = 0\nfor command in items:\n    if command[0] == \"forward\":\n        pos += int(command[1])\n    elif command[0] == \"down\":\n        depth += int(command[1])",
+        "detail": "AdventOfCode.2021.day2",
+        "documentation": {}
+    },
+    {
+        "label": "pos",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day2",
+        "description": "AdventOfCode.2021.day2",
+        "peekOfCode": "pos = 0 \ndepth = 0\nfor command in items:\n    if command[0] == \"forward\":\n        pos += int(command[1])\n    elif command[0] == \"down\":\n        depth += int(command[1])\n    elif command[0] == \"up\":\n        depth -= int(command[1])\nprint(pos * depth)",
+        "detail": "AdventOfCode.2021.day2",
+        "documentation": {}
+    },
+    {
+        "label": "depth",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day2",
+        "description": "AdventOfCode.2021.day2",
+        "peekOfCode": "depth = 0\nfor command in items:\n    if command[0] == \"forward\":\n        pos += int(command[1])\n    elif command[0] == \"down\":\n        depth += int(command[1])\n    elif command[0] == \"up\":\n        depth -= int(command[1])\nprint(pos * depth)\n# --- Part Two ---",
+        "detail": "AdventOfCode.2021.day2",
+        "documentation": {}
+    },
+    {
+        "label": "pos",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day2",
+        "description": "AdventOfCode.2021.day2",
+        "peekOfCode": "pos = 0 \ndepth = 0\naim = 0\nfor command in items:\n    if command[0] == \"forward\":\n        pos += int(command[1])\n        depth += aim * int(command[1])\n    elif command[0] == \"down\":\n        #depth += int(command[1])\n        aim += int(command[1])",
+        "detail": "AdventOfCode.2021.day2",
+        "documentation": {}
+    },
+    {
+        "label": "depth",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day2",
+        "description": "AdventOfCode.2021.day2",
+        "peekOfCode": "depth = 0\naim = 0\nfor command in items:\n    if command[0] == \"forward\":\n        pos += int(command[1])\n        depth += aim * int(command[1])\n    elif command[0] == \"down\":\n        #depth += int(command[1])\n        aim += int(command[1])\n    elif command[0] == \"up\":",
+        "detail": "AdventOfCode.2021.day2",
+        "documentation": {}
+    },
+    {
+        "label": "aim",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day2",
+        "description": "AdventOfCode.2021.day2",
+        "peekOfCode": "aim = 0\nfor command in items:\n    if command[0] == \"forward\":\n        pos += int(command[1])\n        depth += aim * int(command[1])\n    elif command[0] == \"down\":\n        #depth += int(command[1])\n        aim += int(command[1])\n    elif command[0] == \"up\":\n        #depth -= int(command[1])",
+        "detail": "AdventOfCode.2021.day2",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day3",
+        "description": "AdventOfCode.2021.day3",
+        "peekOfCode": "items = [list(item.strip().replace(\"\\n\", \"\")) for item in open(\"../inputs/2021/day3.txt\", \"r\", encoding=\"UTF-8\").readlines()]\n# --- Part One ---\nprint(\" --- Part One ---\")\nbits = [[num[i] for num in items] for i in range(0, len(items[0]))]\ncommon_bits = [\"0\" if bit.count(\"0\") >= len(bit) // 2 else \"1\" for bit in bits]\nleast_bits = [\"0\" if bit.count(\"0\") < len(bit) // 2 else \"1\" for bit in bits]\nprint(int(\"\".join(common_bits), 2) * int(\"\".join(least_bits), 2))\n# --- Part Two ---\nprint(\" --- Part Two ---\")\n#oxygen = [[num for num in items if num[i] == common_bits[i]] for i in range(0, len(items[0]))]",
+        "detail": "AdventOfCode.2021.day3",
+        "documentation": {}
+    },
+    {
+        "label": "bits",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day3",
+        "description": "AdventOfCode.2021.day3",
+        "peekOfCode": "bits = [[num[i] for num in items] for i in range(0, len(items[0]))]\ncommon_bits = [\"0\" if bit.count(\"0\") >= len(bit) // 2 else \"1\" for bit in bits]\nleast_bits = [\"0\" if bit.count(\"0\") < len(bit) // 2 else \"1\" for bit in bits]\nprint(int(\"\".join(common_bits), 2) * int(\"\".join(least_bits), 2))\n# --- Part Two ---\nprint(\" --- Part Two ---\")\n#oxygen = [[num for num in items if num[i] == common_bits[i]] for i in range(0, len(items[0]))]\n#fitting = items\n#for i in range(0, len(items[0])):\n#    common_bits = [\"0\" if bit.count(\"0\") >= len(bit) // 2 else \"1\" for bit in fitting]",
+        "detail": "AdventOfCode.2021.day3",
+        "documentation": {}
+    },
+    {
+        "label": "common_bits",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day3",
+        "description": "AdventOfCode.2021.day3",
+        "peekOfCode": "common_bits = [\"0\" if bit.count(\"0\") >= len(bit) // 2 else \"1\" for bit in bits]\nleast_bits = [\"0\" if bit.count(\"0\") < len(bit) // 2 else \"1\" for bit in bits]\nprint(int(\"\".join(common_bits), 2) * int(\"\".join(least_bits), 2))\n# --- Part Two ---\nprint(\" --- Part Two ---\")\n#oxygen = [[num for num in items if num[i] == common_bits[i]] for i in range(0, len(items[0]))]\n#fitting = items\n#for i in range(0, len(items[0])):\n#    common_bits = [\"0\" if bit.count(\"0\") >= len(bit) // 2 else \"1\" for bit in fitting]\n#    fitting = [num for num in items if num[i] == common_bits[i]]",
+        "detail": "AdventOfCode.2021.day3",
+        "documentation": {}
+    },
+    {
+        "label": "least_bits",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day3",
+        "description": "AdventOfCode.2021.day3",
+        "peekOfCode": "least_bits = [\"0\" if bit.count(\"0\") < len(bit) // 2 else \"1\" for bit in bits]\nprint(int(\"\".join(common_bits), 2) * int(\"\".join(least_bits), 2))\n# --- Part Two ---\nprint(\" --- Part Two ---\")\n#oxygen = [[num for num in items if num[i] == common_bits[i]] for i in range(0, len(items[0]))]\n#fitting = items\n#for i in range(0, len(items[0])):\n#    common_bits = [\"0\" if bit.count(\"0\") >= len(bit) // 2 else \"1\" for bit in fitting]\n#    fitting = [num for num in items if num[i] == common_bits[i]]\n#print(len(fitting))",
+        "detail": "AdventOfCode.2021.day3",
+        "documentation": {}
+    },
+    {
+        "label": "#oxygen",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day3",
+        "description": "AdventOfCode.2021.day3",
+        "peekOfCode": "#oxygen = [[num for num in items if num[i] == common_bits[i]] for i in range(0, len(items[0]))]\n#fitting = items\n#for i in range(0, len(items[0])):\n#    common_bits = [\"0\" if bit.count(\"0\") >= len(bit) // 2 else \"1\" for bit in fitting]\n#    fitting = [num for num in items if num[i] == common_bits[i]]\n#print(len(fitting))\ntheta = \"\"\nepsilon = \"\"\nfor i in range(len(items[0])):\n    common = Counter([x[i] for x in items])",
+        "detail": "AdventOfCode.2021.day3",
+        "documentation": {}
+    },
+    {
+        "label": "#fitting",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day3",
+        "description": "AdventOfCode.2021.day3",
+        "peekOfCode": "#fitting = items\n#for i in range(0, len(items[0])):\n#    common_bits = [\"0\" if bit.count(\"0\") >= len(bit) // 2 else \"1\" for bit in fitting]\n#    fitting = [num for num in items if num[i] == common_bits[i]]\n#print(len(fitting))\ntheta = \"\"\nepsilon = \"\"\nfor i in range(len(items[0])):\n    common = Counter([x[i] for x in items])\nitems = [list(item.strip().replace(\"\\n\", \"\")) for item in open(\"../inputs/2021/day3.txt\", \"r\", encoding=\"UTF-8\").readlines()]",
+        "detail": "AdventOfCode.2021.day3",
+        "documentation": {}
+    },
+    {
+        "label": "theta",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day3",
+        "description": "AdventOfCode.2021.day3",
+        "peekOfCode": "theta = \"\"\nepsilon = \"\"\nfor i in range(len(items[0])):\n    common = Counter([x[i] for x in items])\nitems = [list(item.strip().replace(\"\\n\", \"\")) for item in open(\"../inputs/2021/day3.txt\", \"r\", encoding=\"UTF-8\").readlines()]\nfor i in range(len(items[0])):\n    common = Counter(x[i] for x in items)\n    if common[\"0\"] > common[\"1\"]:\n        items = [x for x in items if x[i] == \"1\"]\n    else:",
+        "detail": "AdventOfCode.2021.day3",
+        "documentation": {}
+    },
+    {
+        "label": "epsilon",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day3",
+        "description": "AdventOfCode.2021.day3",
+        "peekOfCode": "epsilon = \"\"\nfor i in range(len(items[0])):\n    common = Counter([x[i] for x in items])\nitems = [list(item.strip().replace(\"\\n\", \"\")) for item in open(\"../inputs/2021/day3.txt\", \"r\", encoding=\"UTF-8\").readlines()]\nfor i in range(len(items[0])):\n    common = Counter(x[i] for x in items)\n    if common[\"0\"] > common[\"1\"]:\n        items = [x for x in items if x[i] == \"1\"]\n    else:\n        items = [x for x in items if x[i] == \"0\"]",
+        "detail": "AdventOfCode.2021.day3",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day3",
+        "description": "AdventOfCode.2021.day3",
+        "peekOfCode": "items = [list(item.strip().replace(\"\\n\", \"\")) for item in open(\"../inputs/2021/day3.txt\", \"r\", encoding=\"UTF-8\").readlines()]\nfor i in range(len(items[0])):\n    common = Counter(x[i] for x in items)\n    if common[\"0\"] > common[\"1\"]:\n        items = [x for x in items if x[i] == \"1\"]\n    else:\n        items = [x for x in items if x[i] == \"0\"]\n    if items:\n        epsilon = items[0]\nprint(int(theta, 2)*int(epsilon,2))",
+        "detail": "AdventOfCode.2021.day3",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day4",
+        "description": "AdventOfCode.2021.day4",
+        "peekOfCode": "items = open(\"../inputs/2021/day4.txt\", \"r\").read().split(\"\\n\\n\")\n# --- Part One ---\nprint(\" --- Part One ---\")\nnumbers = [int(number.strip()) for number in items.pop(0).split(\",\")]\nboards = [[[int(num) for num in line.strip().replace(\"  \", \" \").split(\" \")] for line in item.split(\"\\n\")] for item in items]\nfor number in numbers:\n    for board in boards:\n        for index, line in enumerate(board):\n            if number in line:\n                line[line.index(number)] = -1",
+        "detail": "AdventOfCode.2021.day4",
+        "documentation": {}
+    },
+    {
+        "label": "numbers",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day4",
+        "description": "AdventOfCode.2021.day4",
+        "peekOfCode": "numbers = [int(number.strip()) for number in items.pop(0).split(\",\")]\nboards = [[[int(num) for num in line.strip().replace(\"  \", \" \").split(\" \")] for line in item.split(\"\\n\")] for item in items]\nfor number in numbers:\n    for board in boards:\n        for index, line in enumerate(board):\n            if number in line:\n                line[line.index(number)] = -1\n                if line.count(-1) == 5 or [line[index] for line in board].count(-1) == 5:\n                    #print(\"BINGO!\")\n                    #print(\"\".join([f\"{line}\\n\" for line in board]))",
+        "detail": "AdventOfCode.2021.day4",
+        "documentation": {}
+    },
+    {
+        "label": "boards",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day4",
+        "description": "AdventOfCode.2021.day4",
+        "peekOfCode": "boards = [[[int(num) for num in line.strip().replace(\"  \", \" \").split(\" \")] for line in item.split(\"\\n\")] for item in items]\nfor number in numbers:\n    for board in boards:\n        for index, line in enumerate(board):\n            if number in line:\n                line[line.index(number)] = -1\n                if line.count(-1) == 5 or [line[index] for line in board].count(-1) == 5:\n                    #print(\"BINGO!\")\n                    #print(\"\".join([f\"{line}\\n\" for line in board]))\n                    #print(sum([int(num) for line in board for num in line if num != \" X\"]) * int(number))",
+        "detail": "AdventOfCode.2021.day4",
+        "documentation": {}
+    },
+    {
+        "label": "boards",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day4",
+        "description": "AdventOfCode.2021.day4",
+        "peekOfCode": "boards = [[[int(num) for num in line.strip().replace(\"  \", \" \").split(\" \") if num != \"\"] for line in item.split(\"\\n\")] for item in items]\nwinners = []\nfor number in numbers:\n    for board in boards:\n        for line in board:\n            if number in line:\n                line[line.index(number)] = -1\n        if 5 in [line.count(-1) for line in board] or 5 in [[line[i] for line in board].count(-1) for i in range(0, 5)]:\n            winners.append((number, board))\n            boards.remove(board)",
+        "detail": "AdventOfCode.2021.day4",
+        "documentation": {}
+    },
+    {
+        "label": "winners",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day4",
+        "description": "AdventOfCode.2021.day4",
+        "peekOfCode": "winners = []\nfor number in numbers:\n    for board in boards:\n        for line in board:\n            if number in line:\n                line[line.index(number)] = -1\n        if 5 in [line.count(-1) for line in board] or 5 in [[line[i] for line in board].count(-1) for i in range(0, 5)]:\n            winners.append((number, board))\n            boards.remove(board)\nboard = winners[-1]",
+        "detail": "AdventOfCode.2021.day4",
+        "documentation": {}
+    },
+    {
+        "label": "board",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day4",
+        "description": "AdventOfCode.2021.day4",
+        "peekOfCode": "board = winners[-1]\nnumber = board[0]\nprint(number)\nprint(\"\".join([f\"{line}\\n\" for line in board[1]]))\nprint(f\"numbers.index(number)={numbers.index(number)}/{len(numbers)}\")\nprint(f\"sum={sum([int(num) for line in board[1] for num in line if num != -1]) * int(number)}\")\n#\n#for num in numbers:\n#    for winner in winners:\n#        winner = winner[1]",
+        "detail": "AdventOfCode.2021.day4",
+        "documentation": {}
+    },
+    {
+        "label": "number",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day4",
+        "description": "AdventOfCode.2021.day4",
+        "peekOfCode": "number = board[0]\nprint(number)\nprint(\"\".join([f\"{line}\\n\" for line in board[1]]))\nprint(f\"numbers.index(number)={numbers.index(number)}/{len(numbers)}\")\nprint(f\"sum={sum([int(num) for line in board[1] for num in line if num != -1]) * int(number)}\")\n#\n#for num in numbers:\n#    for winner in winners:\n#        winner = winner[1]\n#        for line in winner:",
+        "detail": "AdventOfCode.2021.day4",
+        "documentation": {}
+    },
+    {
+        "label": "Line",
+        "kind": 6,
+        "importPath": "AdventOfCode.2021.day5",
+        "description": "AdventOfCode.2021.day5",
+        "peekOfCode": "class Line:\n    def __init__(self, x1: int, y1: int, x2: int, y2: int):\n        self.x1 = x1\n        self.y1 = y1\n        self.x2 = x2\n        self.y2 = y2\n    def __str__(self):\n        return f\"{self.x1},{self.y1} -> {self.x2},{self.y2} \"\nitems = [[[int(num.strip()) for num in part.split(\",\")] for part in line.split(\" -> \")] for line in\n         open(\"../inputs/2021/day5.txt\", \"r\").readlines()]",
+        "detail": "AdventOfCode.2021.day5",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day5",
+        "description": "AdventOfCode.2021.day5",
+        "peekOfCode": "items = [[[int(num.strip()) for num in part.split(\",\")] for part in line.split(\" -> \")] for line in\n         open(\"../inputs/2021/day5.txt\", \"r\").readlines()]\nitems = [vec for vec in items if vec[0][0] == vec[1][0] or vec[0][1] == vec[1][1]]\nitems = [Line(vec[0][0], vec[0][1], vec[1][0], vec[1][1]) for vec in items]\nplane = [[[0 for _ in range(0, 1001)] for _ in range(0, 1001)] for _ in range(0, 1001)]\nfor line in items:\n    if line.x1 == line.x2:\n        i = line.y1\n        while i != line.y2:\n            plane[1][i] += 1",
+        "detail": "AdventOfCode.2021.day5",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day5",
+        "description": "AdventOfCode.2021.day5",
+        "peekOfCode": "items = [vec for vec in items if vec[0][0] == vec[1][0] or vec[0][1] == vec[1][1]]\nitems = [Line(vec[0][0], vec[0][1], vec[1][0], vec[1][1]) for vec in items]\nplane = [[[0 for _ in range(0, 1001)] for _ in range(0, 1001)] for _ in range(0, 1001)]\nfor line in items:\n    if line.x1 == line.x2:\n        i = line.y1\n        while i != line.y2:\n            plane[1][i] += 1\n            if line.y1 >= line.y2:\n                i -= 1",
+        "detail": "AdventOfCode.2021.day5",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day5",
+        "description": "AdventOfCode.2021.day5",
+        "peekOfCode": "items = [Line(vec[0][0], vec[0][1], vec[1][0], vec[1][1]) for vec in items]\nplane = [[[0 for _ in range(0, 1001)] for _ in range(0, 1001)] for _ in range(0, 1001)]\nfor line in items:\n    if line.x1 == line.x2:\n        i = line.y1\n        while i != line.y2:\n            plane[1][i] += 1\n            if line.y1 >= line.y2:\n                i -= 1\n            else:",
+        "detail": "AdventOfCode.2021.day5",
+        "documentation": {}
+    },
+    {
+        "label": "plane",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day5",
+        "description": "AdventOfCode.2021.day5",
+        "peekOfCode": "plane = [[[0 for _ in range(0, 1001)] for _ in range(0, 1001)] for _ in range(0, 1001)]\nfor line in items:\n    if line.x1 == line.x2:\n        i = line.y1\n        while i != line.y2:\n            plane[1][i] += 1\n            if line.y1 >= line.y2:\n                i -= 1\n            else:\n                i += 1",
+        "detail": "AdventOfCode.2021.day5",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day6",
+        "description": "AdventOfCode.2021.day6",
+        "peekOfCode": "items = [int(num) for num in open(\"../inputs/2021/day6.txt\", \"r\").read().split(\",\")]\n#\n#for _ in range(0, 81):\n#    zeros = items.count(0)\n#    items = [fish - 1 if fish != 0 else 6 for fish in items]\n#    for _ in range(0, zeros):\n#        items.append(8)\n#\n#print(len(items))\n#items = [3,4,3,1,2]",
+        "detail": "AdventOfCode.2021.day6",
+        "documentation": {}
+    },
+    {
+        "label": "#items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day6",
+        "description": "AdventOfCode.2021.day6",
+        "peekOfCode": "#items = [3,4,3,1,2]\nfor i in range(0, 256):\n    zeros = items.count(0)\n    items = [fish - 1 if fish != 0 else 6 for fish in items]\n    print(f\"After {i} days: {len(items)}\")\n    for _ in range(0, zeros):\n        items.append(8)\nprint(len(items))",
+        "detail": "AdventOfCode.2021.day6",
+        "documentation": {}
+    },
+    {
+        "label": "lines",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day9",
+        "description": "AdventOfCode.2021.day9",
+        "peekOfCode": "lines = [[int(char) for char in line] for line in open(\"../inputs/2021/day9.txt\", \"r\").read().split(\"\\n\")]\nlow_points = []\nfor index_line, line in enumerate(lines):\n    for index_point, point in enumerate(line):\n        if index_line - 1 >= 0:\n            if lines[index_line - 1][index_point] <= point:\n                continue\n        if index_point - 1 >= 0:\n            if line[index_point - 1] <= point:\n                continue",
+        "detail": "AdventOfCode.2021.day9",
+        "documentation": {}
+    },
+    {
+        "label": "low_points",
+        "kind": 5,
+        "importPath": "AdventOfCode.2021.day9",
+        "description": "AdventOfCode.2021.day9",
+        "peekOfCode": "low_points = []\nfor index_line, line in enumerate(lines):\n    for index_point, point in enumerate(line):\n        if index_line - 1 >= 0:\n            if lines[index_line - 1][index_point] <= point:\n                continue\n        if index_point - 1 >= 0:\n            if line[index_point - 1] <= point:\n                continue\n        if index_point + 1 <= len(line) - 1:",
+        "detail": "AdventOfCode.2021.day9",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day1",
+        "description": "AdventOfCode.2022.day1",
+        "peekOfCode": "items = sorted([sum([int(l) for l in line.split(\"\\n\")]) for line in open(\"../inputs/2022/day1.txt\", \"r\").read().split(\"\\n\\n\")], reverse=True)\nprint(items[0])\nprint(sum(sorted(items, reverse=True)[0:3]))",
+        "detail": "AdventOfCode.2022.day1",
+        "documentation": {}
+    },
+    {
+        "label": "inp",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day2",
+        "description": "AdventOfCode.2022.day2",
+        "peekOfCode": "inp = [line for line in open(\"../inputs/2022/day2.txt\", \"r\").read().split(\"\\n\")]\n# A, X = Rock = 1\n# B, Y = Paper = 2\n# C, Z = Scissors = 3\npoints = {\n    \"A X\": 4,\n    \"A Y\": 8,\n    \"A Z\": 3,\n    \"B X\": 1,\n    \"B Y\": 5,",
+        "detail": "AdventOfCode.2022.day2",
+        "documentation": {}
+    },
+    {
+        "label": "points",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day2",
+        "description": "AdventOfCode.2022.day2",
+        "peekOfCode": "points = {\n    \"A X\": 4,\n    \"A Y\": 8,\n    \"A Z\": 3,\n    \"B X\": 1,\n    \"B Y\": 5,\n    \"B Z\": 9,\n    \"C X\": 7,\n    \"C Y\": 2,\n    \"C Z\": 6,",
+        "detail": "AdventOfCode.2022.day2",
+        "documentation": {}
+    },
+    {
+        "label": "scores",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day2",
+        "description": "AdventOfCode.2022.day2",
+        "peekOfCode": "scores = {\n    \"X\": 0,\n    \"Y\": 3,\n    \"Z\": 6,\n    \"A\": 1,\n    \"B\": 2,\n    \"C\": 3,\n}\nprint(sum([points[play] for play in inp]))\nscore = 0",
+        "detail": "AdventOfCode.2022.day2",
+        "documentation": {}
+    },
+    {
+        "label": "score",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day2",
+        "description": "AdventOfCode.2022.day2",
+        "peekOfCode": "score = 0\nfor enemy, outcome in [line.split(\" \") for line in inp]:\n    score += scores[outcome]\n    if outcome == \"Y\":\n        score += scores[enemy]\n    elif outcome == \"X\":\n        score += scores[]",
+        "detail": "AdventOfCode.2022.day2",
+        "documentation": {}
+    },
+    {
+        "label": "split",
+        "kind": 2,
+        "importPath": "AdventOfCode.2022.day3",
+        "description": "AdventOfCode.2022.day3",
+        "peekOfCode": "def split(l, n):\n    # looping till length l\n    for i in range(0, len(l), n):\n        yield l[i:i + n]\nitems = list(split(items, 3))\nscore = 0\nfor group in items:\n    for char in group[0]:\n        if char in group[1] and char in group[2]:\n            score += chars.index(char) + 1",
+        "detail": "AdventOfCode.2022.day3",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day3",
+        "description": "AdventOfCode.2022.day3",
+        "peekOfCode": "items = open(\"../inputs/2022/day3.txt\", \"r\").read().splitlines()\nscore = 0\nchars = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\"\nfor char in chars:\n    #print(char, chars.index(char) + 1)\n    pass\nfor line in items:\n    #print(line)\n    first = line[:len(line) // 2]\n    second = line[len(line) // 2:]",
+        "detail": "AdventOfCode.2022.day3",
+        "documentation": {}
+    },
+    {
+        "label": "score",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day3",
+        "description": "AdventOfCode.2022.day3",
+        "peekOfCode": "score = 0\nchars = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\"\nfor char in chars:\n    #print(char, chars.index(char) + 1)\n    pass\nfor line in items:\n    #print(line)\n    first = line[:len(line) // 2]\n    second = line[len(line) // 2:]\n    #print(first, second)",
+        "detail": "AdventOfCode.2022.day3",
+        "documentation": {}
+    },
+    {
+        "label": "chars",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day3",
+        "description": "AdventOfCode.2022.day3",
+        "peekOfCode": "chars = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\"\nfor char in chars:\n    #print(char, chars.index(char) + 1)\n    pass\nfor line in items:\n    #print(line)\n    first = line[:len(line) // 2]\n    second = line[len(line) // 2:]\n    #print(first, second)\n    for char in first:",
+        "detail": "AdventOfCode.2022.day3",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day3",
+        "description": "AdventOfCode.2022.day3",
+        "peekOfCode": "items = list(split(items, 3))\nscore = 0\nfor group in items:\n    for char in group[0]:\n        if char in group[1] and char in group[2]:\n            score += chars.index(char) + 1\n            break\nprint(score)",
+        "detail": "AdventOfCode.2022.day3",
+        "documentation": {}
+    },
+    {
+        "label": "score",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day3",
+        "description": "AdventOfCode.2022.day3",
+        "peekOfCode": "score = 0\nfor group in items:\n    for char in group[0]:\n        if char in group[1] and char in group[2]:\n            score += chars.index(char) + 1\n            break\nprint(score)",
+        "detail": "AdventOfCode.2022.day3",
+        "documentation": {}
+    },
+    {
+        "label": "pretty_string",
+        "kind": 2,
+        "importPath": "AdventOfCode.2022.day4",
+        "description": "AdventOfCode.2022.day4",
+        "peekOfCode": "def pretty_string(item):\n    return [\n        \"\".join(\n            [\"-\" if number in range(item[0][0], item[0][1]) else \" \" for number in range(0, 101)]) + \"\\n\",\n        \"\".join([\"-\" if number in range(item[1][0], item[1][1]) else \"  \" for number in range(0, 101)])\n    ]\ndef part1():\n    items = [[[int(part) for part in element.split(\"-\")] for element in line.split(\",\")] for line in\n             open(\"../inputs/2022/day4.txt\").read().splitlines()]\n    items = [line for line in items",
+        "detail": "AdventOfCode.2022.day4",
+        "documentation": {}
+    },
+    {
+        "label": "part1",
+        "kind": 2,
+        "importPath": "AdventOfCode.2022.day4",
+        "description": "AdventOfCode.2022.day4",
+        "peekOfCode": "def part1():\n    items = [[[int(part) for part in element.split(\"-\")] for element in line.split(\",\")] for line in\n             open(\"../inputs/2022/day4.txt\").read().splitlines()]\n    items = [line for line in items\n             if (line[1][0] >= line[0][0] and line[1][1] <= line[0][1]) or (\n                     line[1][0] <= line[0][0] and line[1][1] >= line[0][1])]\n    print(len(items))\ndef part2():\n    items = [[[int(part) for part in element.split(\"-\")] for element in line.split(\",\")] for line in\n             open(\"../inputs/2022/day4.txt\").read().splitlines()]",
+        "detail": "AdventOfCode.2022.day4",
+        "documentation": {}
+    },
+    {
+        "label": "part2",
+        "kind": 2,
+        "importPath": "AdventOfCode.2022.day4",
+        "description": "AdventOfCode.2022.day4",
+        "peekOfCode": "def part2():\n    items = [[[int(part) for part in element.split(\"-\")] for element in line.split(\",\")] for line in\n             open(\"../inputs/2022/day4.txt\").read().splitlines()]\n    overlap = [line for line in items\n               if (line[0][1] >= line[1][0] >= line[0][0])\n               or (line[1][1] >= line[0][0] >= line[1][0])]\n    print(len(overlap))",
+        "detail": "AdventOfCode.2022.day4",
+        "documentation": {}
+    },
+    {
+        "label": "lines",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day5",
+        "description": "AdventOfCode.2022.day5",
+        "peekOfCode": "lines = open(\"../inputs/2022/day5.txt\", \"r\").read().split(\"\\n\\n\")\nitems = {\n\t\"1\": [\"B\", \"Z\", \"T\"],\n\t\"2\": [\"V\", \"H\", \"T\", \"D\", \"N\"],\n\t\"3\": [\"B\", \"F\", \"M\", \"D\"],\n\t\"4\": [\"T\", \"J\", \"G\", \"W\", \"V\", \"Q\", \"L\"],\n\t\"5\": [\"W\", \"D\", \"G\", \"P\", \"V\", \"F\", \"Q\", \"M\"],\n\t\"6\": [\"V\", \"Z\", \"Q\", \"G\", \"H\", \"F\", \"S\"],\n\t\"7\": [\"Z\", \"S\", \"N\", \"R\", \"L\", \"T\", \"C\", \"W\"],\n\t\"8\": [\"Z\", \"H\", \"W\", \"D\", \"J\", \"N\", \"R\", \"M\"],",
+        "detail": "AdventOfCode.2022.day5",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day5",
+        "description": "AdventOfCode.2022.day5",
+        "peekOfCode": "items = {\n\t\"1\": [\"B\", \"Z\", \"T\"],\n\t\"2\": [\"V\", \"H\", \"T\", \"D\", \"N\"],\n\t\"3\": [\"B\", \"F\", \"M\", \"D\"],\n\t\"4\": [\"T\", \"J\", \"G\", \"W\", \"V\", \"Q\", \"L\"],\n\t\"5\": [\"W\", \"D\", \"G\", \"P\", \"V\", \"F\", \"Q\", \"M\"],\n\t\"6\": [\"V\", \"Z\", \"Q\", \"G\", \"H\", \"F\", \"S\"],\n\t\"7\": [\"Z\", \"S\", \"N\", \"R\", \"L\", \"T\", \"C\", \"W\"],\n\t\"8\": [\"Z\", \"H\", \"W\", \"D\", \"J\", \"N\", \"R\", \"M\"],\n\t\"9\": [\"M\", \"Q\", \"L\", \"F\", \"D\", \"S\"] ",
+        "detail": "AdventOfCode.2022.day5",
+        "documentation": {}
+    },
+    {
+        "label": "lines",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day5",
+        "description": "AdventOfCode.2022.day5",
+        "peekOfCode": "lines = [line for line in open(\"../inputs/2022/day5.txt\", \"r\").read().split(\"\\n\\n\")[1].split(\"\\n\") if line != \"\"]\nmoves = []\n# move <amount> from <from> to <to>\nfor move in lines:\n\tline = move.split(\" \")\n\tline = [line[1], line[3], line[5]]\n\tmoves.append(line)\ncrates = []\nprint(crates)",
+        "detail": "AdventOfCode.2022.day5",
+        "documentation": {}
+    },
+    {
+        "label": "moves",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day5",
+        "description": "AdventOfCode.2022.day5",
+        "peekOfCode": "moves = []\n# move <amount> from <from> to <to>\nfor move in lines:\n\tline = move.split(\" \")\n\tline = [line[1], line[3], line[5]]\n\tmoves.append(line)\ncrates = []\nprint(crates)",
+        "detail": "AdventOfCode.2022.day5",
+        "documentation": {}
+    },
+    {
+        "label": "\tline",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day5",
+        "description": "AdventOfCode.2022.day5",
+        "peekOfCode": "\tline = move.split(\" \")\n\tline = [line[1], line[3], line[5]]\n\tmoves.append(line)\ncrates = []\nprint(crates)",
+        "detail": "AdventOfCode.2022.day5",
+        "documentation": {}
+    },
+    {
+        "label": "\tline",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day5",
+        "description": "AdventOfCode.2022.day5",
+        "peekOfCode": "\tline = [line[1], line[3], line[5]]\n\tmoves.append(line)\ncrates = []\nprint(crates)",
+        "detail": "AdventOfCode.2022.day5",
+        "documentation": {}
+    },
+    {
+        "label": "crates",
+        "kind": 5,
+        "importPath": "AdventOfCode.2022.day5",
+        "description": "AdventOfCode.2022.day5",
+        "peekOfCode": "crates = []\nprint(crates)",
+        "detail": "AdventOfCode.2022.day5",
+        "documentation": {}
+    },
+    {
+        "label": "print_array",
+        "kind": 2,
+        "importPath": "AdventOfCode.AdventOfCode",
+        "description": "AdventOfCode.AdventOfCode",
+        "peekOfCode": "def print_array(liste: Iterable) -> None:\n    print(\"\".join([str(line) + \"\\n\" for line in liste]))",
+        "detail": "AdventOfCode.AdventOfCode",
+        "documentation": {}
+    },
+    {
+        "label": "items",
+        "kind": 5,
+        "importPath": "AdventOfCode.default",
+        "description": "AdventOfCode.default",
+        "peekOfCode": "items = open(\"/inputs_2020.1.1.txt\", \"r\").read().splitlines()\nfor item in items:\n    pass",
+        "detail": "AdventOfCode.default",
+        "documentation": {}
+    },
+    {
+        "label": "Colors",
+        "kind": 6,
+        "importPath": "Logger",
+        "description": "Logger",
+        "peekOfCode": "class Colors(Enum):\n    \"\"\"Colors for the terminal\n    Args:\n        Enum (str): All available ANSI formatting codes (some don't work)\n    Returns:\n        str: The ANSI formatting code\n    \"\"\"\n    RESET = '\\033[0m'\n    BOLD = '\\033[1m'\n    ITALIC = '\\033[3m'",
+        "detail": "Logger",
+        "documentation": {}
+    },
+    {
+        "label": "FileHandler",
+        "kind": 6,
+        "importPath": "Logger",
+        "description": "Logger",
+        "peekOfCode": "class FileHandler:\n    def __init__(self, loc: str = \"\"):\n        self.loc = loc\n        directory = loc.split(\"/\")\n        del directory[-1]\n        self.directory = \"\".join([f\"{path}/\" for path in directory])\n    def save(self, content: str):\n        self.create_and_append(content, self.loc)\n    def create_and_append(self, content: str, loc: str):\n        if not os.path.exists(self.directory):",
+        "detail": "Logger",
+        "documentation": {}
+    },
+    {
+        "label": "Logger",
+        "kind": 6,
+        "importPath": "Logger",
+        "description": "Logger",
+        "peekOfCode": "class Logger:\n    class Level(Enum):\n        \"\"\"The level of the log message\n        Args:\n            Enum (int): The number of the level\n        \"\"\"\n        DEBUG = 0\n        LOG = 1\n        INFO = 2\n        WARNING = 3",
+        "detail": "Logger",
+        "documentation": {}
+    },
+    {
+        "label": "DockerBridge",
+        "kind": 6,
+        "importPath": "docker_bridge",
+        "description": "docker_bridge",
+        "peekOfCode": "class DockerBridge(Cmd):\n    def __init__(self):\n        super().__init__()\n        self.prompt = 'docker bridge >>> '\n        self.lg = Logger(\"DockerBridge\", formatter=Logger.minecraft_formatter)\n        self.completions = {\n            \"compile\": [\"tensorflow\", \"edgetpu\", \"compiler\"],\n            \"start\": [\"tensorflow\", \"edgetpu\", \"compiler\"],\n            \"push\": [\"tensorflow\", \"latest\", \"edgetpu\"],\n            \"exit\": [],",
+        "detail": "docker_bridge",
+        "documentation": {}
+    },
+    {
         "label": "cmd",
         "kind": 2,
         "importPath": "docker_bridge",
         "description": "docker_bridge",
-        "peekOfCode": "def cmd(command):\n    if type(command) is str:\n        command = command.split(\" \")\n    return subprocess.check_output(command).decode()\ndef system(command):\n    return os.system(str(command))\ndef get_container_id():\n    return cmd(\"docker ps\").split(\"\\n\")[1][:12]\ncontainer_id = get_container_id()\ndef docker_cp(first, second):",
+        "peekOfCode": "def cmd(command):\n    if type(command) is str:\n        command = command.split(\" \")\n    return subprocess.check_output(command).decode()\ndef system(command):\n    return os.system(str(command))\ndef get_container_id():\n    try:\n        return cmd(\"docker ps\").split(\"\\n\")[1][:12]\n    except Exception as e:",
         "detail": "docker_bridge",
         "documentation": {}
     },
@@ -143,7 +1256,7 @@
         "kind": 2,
         "importPath": "docker_bridge",
         "description": "docker_bridge",
-        "peekOfCode": "def system(command):\n    return os.system(str(command))\ndef get_container_id():\n    return cmd(\"docker ps\").split(\"\\n\")[1][:12]\ncontainer_id = get_container_id()\ndef docker_cp(first, second):\n    cmd(f\"docker cp {first} {second}\")\ndef is_int(number):\n    try:\n        number = int(number)",
+        "peekOfCode": "def system(command):\n    return os.system(str(command))\ndef get_container_id():\n    try:\n        return cmd(\"docker ps\").split(\"\\n\")[1][:12]\n    except Exception as e:\n        print(\"Docker is not running!\")\n        return \"\"\nclass DockerBridge(Cmd):\n    def __init__(self):",
         "detail": "docker_bridge",
         "documentation": {}
     },
@@ -152,35 +1265,89 @@
         "kind": 2,
         "importPath": "docker_bridge",
         "description": "docker_bridge",
-        "peekOfCode": "def get_container_id():\n    return cmd(\"docker ps\").split(\"\\n\")[1][:12]\ncontainer_id = get_container_id()\ndef docker_cp(first, second):\n    cmd(f\"docker cp {first} {second}\")\ndef is_int(number):\n    try:\n        number = int(number)\n        return True\n    except:",
+        "peekOfCode": "def get_container_id():\n    try:\n        return cmd(\"docker ps\").split(\"\\n\")[1][:12]\n    except Exception as e:\n        print(\"Docker is not running!\")\n        return \"\"\nclass DockerBridge(Cmd):\n    def __init__(self):\n        super().__init__()\n        self.prompt = 'docker bridge >>> '",
         "detail": "docker_bridge",
+        "documentation": {}
+    },
+    {
+        "label": "my_cmd",
+        "kind": 5,
+        "importPath": "docker_bridge",
+        "description": "docker_bridge",
+        "peekOfCode": "my_cmd = DockerBridge()\nmy_cmd.cmdloop()",
+        "detail": "docker_bridge",
+        "documentation": {}
+    },
+    {
+        "label": "cmd",
+        "kind": 2,
+        "importPath": "docker_bridge_old",
+        "description": "docker_bridge_old",
+        "peekOfCode": "def cmd(command):\n    if type(command) is str:\n        command = command.split(\" \")\n    return subprocess.check_output(command).decode()\ndef system(command):\n    return os.system(str(command))\ndef get_container_id():\n    try:\n        return cmd(\"docker ps\").split(\"\\n\")[1][:12]\n    except Exception as e:",
+        "detail": "docker_bridge_old",
+        "documentation": {}
+    },
+    {
+        "label": "system",
+        "kind": 2,
+        "importPath": "docker_bridge_old",
+        "description": "docker_bridge_old",
+        "peekOfCode": "def system(command):\n    return os.system(str(command))\ndef get_container_id():\n    try:\n        return cmd(\"docker ps\").split(\"\\n\")[1][:12]\n    except Exception as e:\n        print(\"Docker is not running!\")\ndef docker_cp(first, second):\n    cmd(f\"docker cp {first} {second}\")\ndef is_int(number):",
+        "detail": "docker_bridge_old",
+        "documentation": {}
+    },
+    {
+        "label": "get_container_id",
+        "kind": 2,
+        "importPath": "docker_bridge_old",
+        "description": "docker_bridge_old",
+        "peekOfCode": "def get_container_id():\n    try:\n        return cmd(\"docker ps\").split(\"\\n\")[1][:12]\n    except Exception as e:\n        print(\"Docker is not running!\")\ndef docker_cp(first, second):\n    cmd(f\"docker cp {first} {second}\")\ndef is_int(number):\n    try:\n        number = int(number)",
+        "detail": "docker_bridge_old",
         "documentation": {}
     },
     {
         "label": "docker_cp",
         "kind": 2,
-        "importPath": "docker_bridge",
-        "description": "docker_bridge",
-        "peekOfCode": "def docker_cp(first, second):\n    cmd(f\"docker cp {first} {second}\")\ndef is_int(number):\n    try:\n        number = int(number)\n        return True\n    except:\n        return False\nprint(\"_\" * 20)\nprint(f\"CuzImClicks/Raccoon Docker Bridge\")",
-        "detail": "docker_bridge",
+        "importPath": "docker_bridge_old",
+        "description": "docker_bridge_old",
+        "peekOfCode": "def docker_cp(first, second):\n    cmd(f\"docker cp {first} {second}\")\ndef is_int(number):\n    try:\n        number = int(number)\n        return True\n    except:\n        return False\nlg = Logger(\"Docker Bridge\", formatter=Logger.minecraft_formatter)\ncontainer_id = \"\"",
+        "detail": "docker_bridge_old",
         "documentation": {}
     },
     {
         "label": "is_int",
         "kind": 2,
-        "importPath": "docker_bridge",
-        "description": "docker_bridge",
-        "peekOfCode": "def is_int(number):\n    try:\n        number = int(number)\n        return True\n    except:\n        return False\nprint(\"_\" * 20)\nprint(f\"CuzImClicks/Raccoon Docker Bridge\")\nprint(\"\\n\")\nprint(\"\"\"Commands",
-        "detail": "docker_bridge",
+        "importPath": "docker_bridge_old",
+        "description": "docker_bridge_old",
+        "peekOfCode": "def is_int(number):\n    try:\n        number = int(number)\n        return True\n    except:\n        return False\nlg = Logger(\"Docker Bridge\", formatter=Logger.minecraft_formatter)\ncontainer_id = \"\"\nlg.info(\"_\" * 20)\nlg.info(f\"CuzImClicks/Raccoon Docker Bridge\")",
+        "detail": "docker_bridge_old",
+        "documentation": {}
+    },
+    {
+        "label": "completer",
+        "kind": 2,
+        "importPath": "docker_bridge_old",
+        "description": "docker_bridge_old",
+        "peekOfCode": "def completer(text, state):\n    options = [option for option in [\"upload\", \"download\", \"compile\"] if option.startswith(text)]\n    line = readline.get_line_buffer().split(\" \")\n    if line[0] == \"compile\":\n        return [option for option in [\"edgetpu, compiler\"] if option.startswith(text)]\n    if state < len(options):\n        return options[state]\n    else:\n        return None\nreadline.parse_and_bind(\"tab: complete\")",
+        "detail": "docker_bridge_old",
+        "documentation": {}
+    },
+    {
+        "label": "lg",
+        "kind": 5,
+        "importPath": "docker_bridge_old",
+        "description": "docker_bridge_old",
+        "peekOfCode": "lg = Logger(\"Docker Bridge\", formatter=Logger.minecraft_formatter)\ncontainer_id = \"\"\nlg.info(\"_\" * 20)\nlg.info(f\"CuzImClicks/Raccoon Docker Bridge\")\nlg.info(\"\\n\")\nlg.info(\"\"\"\\nCommands\nupload <number|filepath|url id>     - copy an image to the current docker container\ndownload <number|filepath>          - download an image from the current docker container\nmv <file> <new_loc>                 - move a file\nprintenv                            - print all environment variables",
+        "detail": "docker_bridge_old",
         "documentation": {}
     },
     {
         "label": "container_id",
         "kind": 5,
-        "importPath": "docker_bridge",
-        "description": "docker_bridge",
-        "peekOfCode": "container_id = get_container_id()\ndef docker_cp(first, second):\n    cmd(f\"docker cp {first} {second}\")\ndef is_int(number):\n    try:\n        number = int(number)\n        return True\n    except:\n        return False\nprint(\"_\" * 20)",
-        "detail": "docker_bridge",
+        "importPath": "docker_bridge_old",
+        "description": "docker_bridge_old",
+        "peekOfCode": "container_id = \"\"\nlg.info(\"_\" * 20)\nlg.info(f\"CuzImClicks/Raccoon Docker Bridge\")\nlg.info(\"\\n\")\nlg.info(\"\"\"\\nCommands\nupload <number|filepath|url id>     - copy an image to the current docker container\ndownload <number|filepath>          - download an image from the current docker container\nmv <file> <new_loc>                 - move a file\nprintenv                            - print all environment variables\nid                                  - prints current docker id",
+        "detail": "docker_bridge_old",
         "documentation": {}
     },
     {
@@ -197,7 +1364,7 @@
         "kind": 2,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "def download_model(model_name, model_date):\n    base_url = 'http://download.tensorflow.org/models/object_detection/tf2/'\n    model_file = model_name + '.tar.gz'\n    model_dir = tf.keras.utils.get_file(fname=model_name,\n                                        origin=base_url + model_date + '/' + model_file,\n                                        untar=True)\n    return str(model_dir)\nMODEL_DATE = '20200711'\nMODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'\nPATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)",
+        "peekOfCode": "def download_model(model_name, model_date):\n    base_url = 'http://download.tensorflow.org/models/object_detection/tf2/'\n    model_file = model_name + '.tar.gz'\n    model_dir = tf.keras.utils.get_file(fname=model_name,\n                                        origin=base_url + model_date + '/' + model_file,\n                                        untar=True)\n    return str(model_dir)\nMODEL_DATE = '20200711'\nMODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'\nPATH_TO_MODEL_DIR = \"./centernet_hg104_1024x1024_coco17_tpu-32\" #download_model(MODEL_NAME, MODEL_DATE)",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -206,7 +1373,7 @@
         "kind": 2,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "def download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)\n    label_dir = pathlib.Path(label_dir)\n    return str(label_dir)\nLABEL_FILENAME = 'mscoco_label_map.pbtxt'\nPATH_TO_LABELS = download_labels(LABEL_FILENAME)\nprint(\"Downloaded Labels\")",
+        "peekOfCode": "def download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)\n    label_dir = pathlib.Path(label_dir)\n    return str(label_dir)\nLABEL_FILENAME = 'repo/mscoco_label_map.pbtxt'\nPATH_TO_LABELS = \"./mscoco_label_map.pbtxt\" #download_labels(LABEL_FILENAME)\nlg.info(\"Downloaded Labels\")",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -224,7 +1391,7 @@
         "kind": 2,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "def computeAndSaveImages(images: list) -> None:\n    \"\"\"Computes every image in a list of file paths, runs it through tensorflow and draws the boxes on them\n    Args:\n        images (list): A list of file paths to the images that are to be computed\n    \"\"\"\n    for image_path in images:\n        print(f'Running inference for {image_path}... ')\n        image_np = load_image_into_numpy_array(image_path)\n        input_tensor = tf.convert_to_tensor(image_np)\n        input_tensor = input_tensor[tf.newaxis, ...]",
+        "peekOfCode": "def computeAndSaveImages(images: list) -> None:\n    \"\"\"Computes every image in a list of file paths, runs it through tensorflow and draws the boxes on them\n    Args:\n        images (list): A list of file paths to the images that are to be computed\n    \"\"\"\n    for image_path in images:\n        start_time = time.time()\n        lg.info(f'Running inference for {image_path}... ')\n        image_np = load_image_into_numpy_array(image_path)\n        input_tensor = tf.convert_to_tensor(image_np)",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -233,7 +1400,16 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'    # Suppress TensorFlow logging (1)\nimport pathlib\nimport tensorflow as tf\ntf.get_logger().setLevel('ERROR')           # Suppress TensorFlow logging (2)\nprint(\"_\"*20)\nprint(f\"CuzImClicks/Raccoon Image Detection\")\nprint(\"\\n\")\nprint(os.getcwd())\nproduction = bool(os.environ.get(\"PRODUCTION\"))\nprint(f\"production set to: {production}\")",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'    # Suppress TensorFlow logging (1)\nimport pathlib\nimport tensorflow as tf\nfrom Logger import Logger\ntf.get_logger().setLevel('ERROR')           # Suppress TensorFlow logging (2)\nlg = Logger(name=\"ObjectDetection\", formatter=Logger.minecraft_formatter)\nlg.info(\"_\"*20)\nlg.info(f\"CuzImClicks/Raccoon Image Detection\")\nlg.info(\"\\n\")\nlg.info(os.getcwd())",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "lg",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "lg = Logger(name=\"ObjectDetection\", formatter=Logger.minecraft_formatter)\nlg.info(\"_\"*20)\nlg.info(f\"CuzImClicks/Raccoon Image Detection\")\nlg.info(\"\\n\")\nlg.info(os.getcwd())\nproduction = bool(os.environ.get(\"PRODUCTION\"))\nlg.info(f\"production set to: {production}\")\n# Enable GPU dynamic memory allocation\ngpus = tf.config.experimental.list_physical_devices('GPU')\nfor gpu in gpus:",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -242,7 +1418,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "production = bool(os.environ.get(\"PRODUCTION\"))\nprint(f\"production set to: {production}\")\n# Enable GPU dynamic memory allocation\ngpus = tf.config.experimental.list_physical_devices('GPU')\nfor gpu in gpus:\n    tf.config.experimental.set_memory_growth(gpu, True)\ndef download_images():\n    base_url = 'https://garagenparkhalle.de/sites/default/files/Analyse/'\n    filenames = [\"image4.jpg\", \"image5.jpg\", \"image6.jpg\", 'image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg']\n    image_paths = []",
+        "peekOfCode": "production = bool(os.environ.get(\"PRODUCTION\"))\nlg.info(f\"production set to: {production}\")\n# Enable GPU dynamic memory allocation\ngpus = tf.config.experimental.list_physical_devices('GPU')\nfor gpu in gpus:\n    tf.config.experimental.set_memory_growth(gpu, True)\ndef download_images():\n    base_url = 'https://garagenparkhalle.de/sites/default/files/Analyse/'\n    filenames = [\"image4.jpg\", \"image5.jpg\", \"image6.jpg\", 'image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg']\n    image_paths = []",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -269,7 +1445,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "MODEL_DATE = '20200711'\nMODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'\nPATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)\nprint(\"Downloaded Model\")\n# Download labels file\ndef download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)",
+        "peekOfCode": "MODEL_DATE = '20200711'\nMODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'\nPATH_TO_MODEL_DIR = \"./centernet_hg104_1024x1024_coco17_tpu-32\" #download_model(MODEL_NAME, MODEL_DATE)\nlg.info(f\"PATH_TO_MODEL_DIR = {PATH_TO_MODEL_DIR}\")\nlg.info(\"Downloaded Model\")\n# Download labels file\ndef download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -278,7 +1454,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "MODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'\nPATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)\nprint(\"Downloaded Model\")\n# Download labels file\ndef download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)\n    label_dir = pathlib.Path(label_dir)",
+        "peekOfCode": "MODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'\nPATH_TO_MODEL_DIR = \"./centernet_hg104_1024x1024_coco17_tpu-32\" #download_model(MODEL_NAME, MODEL_DATE)\nlg.info(f\"PATH_TO_MODEL_DIR = {PATH_TO_MODEL_DIR}\")\nlg.info(\"Downloaded Model\")\n# Download labels file\ndef download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -287,7 +1463,16 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "PATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)\nprint(\"Downloaded Model\")\n# Download labels file\ndef download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)\n    label_dir = pathlib.Path(label_dir)\n    return str(label_dir)",
+        "peekOfCode": "PATH_TO_MODEL_DIR = \"./centernet_hg104_1024x1024_coco17_tpu-32\" #download_model(MODEL_NAME, MODEL_DATE)\nlg.info(f\"PATH_TO_MODEL_DIR = {PATH_TO_MODEL_DIR}\")\nlg.info(\"Downloaded Model\")\n# Download labels file\ndef download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)\n    label_dir = pathlib.Path(label_dir)",
+        "detail": "plot_object_detection_saved_model",
+        "documentation": {}
+    },
+    {
+        "label": "lg.info(f\"PATH_TO_MODEL_DIR",
+        "kind": 5,
+        "importPath": "plot_object_detection_saved_model",
+        "description": "plot_object_detection_saved_model",
+        "peekOfCode": "lg.info(f\"PATH_TO_MODEL_DIR = {PATH_TO_MODEL_DIR}\")\nlg.info(\"Downloaded Model\")\n# Download labels file\ndef download_labels(filename):\n    base_url = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'\n    label_dir = tf.keras.utils.get_file(fname=filename,\n                                        origin=base_url + filename,\n                                        untar=False)\n    label_dir = pathlib.Path(label_dir)\n    return str(label_dir)",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -296,7 +1481,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "LABEL_FILENAME = 'mscoco_label_map.pbtxt'\nPATH_TO_LABELS = download_labels(LABEL_FILENAME)\nprint(\"Downloaded Labels\")\n# Load the model\n# Next we load the downloaded model\nimport time\nfrom object_detection.utils import label_map_util\nfrom object_detection.utils import visualization_utils as viz_utils\nPATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + \"/saved_model\"\nprint('Loading model...')",
+        "peekOfCode": "LABEL_FILENAME = 'repo/mscoco_label_map.pbtxt'\nPATH_TO_LABELS = \"./mscoco_label_map.pbtxt\" #download_labels(LABEL_FILENAME)\nlg.info(\"Downloaded Labels\")\n# Load the model\n# Next we load the downloaded model\nimport time\nfrom object_detection.utils import label_map_util\nfrom object_detection.utils import visualization_utils as viz_utils\nPATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + \"/saved_model\"\nlg.info('Loading model...')",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -305,7 +1490,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "PATH_TO_LABELS = download_labels(LABEL_FILENAME)\nprint(\"Downloaded Labels\")\n# Load the model\n# Next we load the downloaded model\nimport time\nfrom object_detection.utils import label_map_util\nfrom object_detection.utils import visualization_utils as viz_utils\nPATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + \"/saved_model\"\nprint('Loading model...')\nstart_time = time.time()",
+        "peekOfCode": "PATH_TO_LABELS = \"./mscoco_label_map.pbtxt\" #download_labels(LABEL_FILENAME)\nlg.info(\"Downloaded Labels\")\n# Load the model\n# Next we load the downloaded model\nimport time\nfrom object_detection.utils import label_map_util\nfrom object_detection.utils import visualization_utils as viz_utils\nPATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + \"/saved_model\"\nlg.info('Loading model...')\nstart_time = time.time()",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -314,7 +1499,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "PATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + \"/saved_model\"\nprint('Loading model...')\nstart_time = time.time()\ndetect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)\n# Load saved model and build the detection function\n#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)",
+        "peekOfCode": "PATH_TO_SAVED_MODEL = PATH_TO_MODEL_DIR + \"/saved_model\"\nlg.info('Loading model...')\nstart_time = time.time()\ndetect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)\n# Load saved model and build the detection function\n#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nlg.info('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -323,7 +1508,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "start_time = time.time()\ndetect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)\n# Load saved model and build the detection function\n#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,",
+        "peekOfCode": "start_time = time.time()\ndetect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)\n# Load saved model and build the detection function\n#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nlg.info('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -332,7 +1517,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "detect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)\n# Load saved model and build the detection function\n#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)",
+        "peekOfCode": "detect_fn = tf.keras.models.load_model(PATH_TO_SAVED_MODEL)\n# Load saved model and build the detection function\n#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nlg.info('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -341,7 +1526,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nprint(f\"Loaded category index\")\nprint(category_index)",
+        "peekOfCode": "#detect_fn = tf.saved_model.load(PATH_TO_SAVED_MODEL)\nend_time = time.time()\nelapsed_time = end_time - start_time\nlg.info('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nlg.info(f\"Loaded category index\")\nlg.info(category_index)",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -350,7 +1535,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "end_time = time.time()\nelapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nprint(f\"Loaded category index\")\nprint(category_index)\nimport numpy as np",
+        "peekOfCode": "end_time = time.time()\nelapsed_time = end_time - start_time\nlg.info('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nlg.info(f\"Loaded category index\")\nlg.info(category_index)\nimport numpy as np",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -359,7 +1544,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "elapsed_time = end_time - start_time\nprint('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nprint(f\"Loaded category index\")\nprint(category_index)\nimport numpy as np\nfrom PIL import Image",
+        "peekOfCode": "elapsed_time = end_time - start_time\nlg.info('Done! Took {} seconds'.format(elapsed_time))\n# Load label map data (for plotting)\n# Creates a dictionary of { \"1\": \"person\" }\ncategory_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nlg.info(f\"Loaded category index\")\nlg.info(category_index)\nimport numpy as np\nfrom PIL import Image",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
@@ -368,7 +1553,7 @@
         "kind": 5,
         "importPath": "plot_object_detection_saved_model",
         "description": "plot_object_detection_saved_model",
-        "peekOfCode": "category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nprint(f\"Loaded category index\")\nprint(category_index)\nimport numpy as np\nfrom PIL import Image\nimport matplotlib.pyplot as plt\nimport warnings\nwarnings.filterwarnings('ignore')   # Suppress Matplotlib warnings\ndef load_image_into_numpy_array(path):",
+        "peekOfCode": "category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS,\n                                                                    use_display_name=True)\nlg.info(f\"Loaded category index\")\nlg.info(category_index)\nimport numpy as np\nfrom PIL import Image\nimport matplotlib.pyplot as plt\nimport warnings\nwarnings.filterwarnings('ignore')   # Suppress Matplotlib warnings\ndef load_image_into_numpy_array(path):",
         "detail": "plot_object_detection_saved_model",
         "documentation": {}
     },
