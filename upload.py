@@ -1,6 +1,5 @@
 
 import base64
-from roboflow import Roboflow
 import argparse
 import os
 from threading import Thread
@@ -23,10 +22,6 @@ if not os.path.exists(args.file):
 files = [os.path.join(args.file) + file for file in os.listdir(args.file)] if os.path.isdir(args.file) else [
     args.file, ]
 files = [file for file in files if file.split(".")[-1].lower() in ("jpg", "jpeg", "png", "bmp", "mov", "mp4")]
-
-rf = Roboflow(api_key=args.api_key)
-workspace = rf.workspace()
-project = workspace.project(args.project)
 
 bar = tqdm(files, unit="images", desc="Starting Upload")
 
