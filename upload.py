@@ -34,9 +34,13 @@ url = lambda project, api_key, name: f"https://api.roboflow.com/dataset/{project
 
 # add a prevention mechanism that prevents more than ten images at a time from being uploaded and waits for one to finish before starting another
 
+first = ""
 
 def upload(file):
-    bar.set_description(f"Uploading {file}")
+    desc = f"Uploading {file}"
+    if first == "":
+        first = desc
+    bar.set_description(desc)
     bar.refresh()
     lock.append(file)
     requests.post(url(args.project, args.api_key, os.path.basename(file)),
@@ -44,7 +48,7 @@ def upload(file):
     bar.update()
     bar.refresh()
     lock.remove(file)
-    bar.set_description(f"Finished uploading file {file}")
+    bar.set_description(f"Finished uploading file {file}"[:len(first) - 3] + "...")
 
 
 lock = []
