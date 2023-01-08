@@ -5,7 +5,7 @@ WORKDIR /home
 RUN apt-get -y update
 RUN apt-get -y upgrade
 
-RUN apt-get -y install git usbutils nano wget
+RUN apt-get -y install git usbutils nano wget unzip
 
 RUN echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | tee /etc/apt/sources.list.d/coral-edgetpu.list
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
