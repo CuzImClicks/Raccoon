@@ -24,7 +24,12 @@ def generate_data_val(data: str):
     return [{ "epoch": int(match[0]), "time": int(match[1]), "time_per_step": int(match[2]), "det_loss": float(match[3]), "cls_loss": float(match[4]), "box_loss": float(match[5]), "reg_l2_loss": float(match[6]), "loss": float(match[7]), "learning_rate": float(match[8]), "gradient_norm": float(match[10]), "val_det_loss": float(match[11]), "val_cls_loss": float(match[12]), "val_box_loss": float(match[13]), "val_reg_l2_loss": float(match[14]), "val_loss": float(match[15]) } for match in re.findall(line_regex_val, data)]
 
 
-files = [open(file, "r").read() for file in args.input] if os.path.isfile(args.input) else os.listdir(args.input)
+files = []
+for f in args.input:
+    if os.path.isfile(f):
+        files.append(open(f, "r").read())
+    else:
+        files.extend([open(f"{f}/{file}", "r").read() for file in os.listdir(f)])
 files = [generate_data(file) if not "val_loss" in file else generate_data_val(file) for file in files]
 
 import matplotlib.pyplot as plt
@@ -54,4 +59,3 @@ plt.xlabel("Epoch")
 if any(["loss" in metric for metric in args.metrics]):
     plt.ylabel("Loss")
 plt.savefig(args.output)
- 
