@@ -1,5 +1,6 @@
 import re
 import argparse
+import os
 
 parser = argparse.ArgumentParser()
 
@@ -23,12 +24,14 @@ def generate_data_val(data: str):
     return [{ "epoch": int(match[0]), "time": int(match[1]), "time_per_step": int(match[2]), "det_loss": float(match[3]), "cls_loss": float(match[4]), "box_loss": float(match[5]), "reg_l2_loss": float(match[6]), "loss": float(match[7]), "learning_rate": float(match[8]), "gradient_norm": float(match[10]), "val_det_loss": float(match[11]), "val_cls_loss": float(match[12]), "val_box_loss": float(match[13]), "val_reg_l2_loss": float(match[14]), "val_loss": float(match[15]) } for match in re.findall(line_regex_val, data)]
 
 
-files = [open(file, "r").read() for file in args.input]
+files = [open(file, "r").read() for file in args.input] if os.path.isfile(args.input) else os.listdir(args.input)
 files = [generate_data(file) if not "val_loss" in file else generate_data_val(file) for file in files]
 
 import matplotlib.pyplot as plt
 
 def add_graph(plt, data: dict, name: str, draw_end=False, draw_lowest=False):
+    if any([name not in match for match in data]):
+        return
     values = [float(match[name]) for match in data]
     plt.plot(range(1,  int(data[-1]["epoch"]) + 1), values, label = name)
     if draw_end:
