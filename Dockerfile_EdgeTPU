@@ -21,13 +21,16 @@ RUN mkdir coral && cd coral
 COPY repo/tensorflow-2.12.0-cp38-cp38-linux_x86_64.whl .
 RUN python -m pip install tensorflow-2.12.0-cp38-cp38-linux_x86_64.whl
 
-RUN git clone https://github.com/CuzImClicks/pycoral ./pycoral # cannot copy -> $'\r': command not found
-RUN cd pycoral
-WORKDIR pycoral
+RUN git clone https://github.com/CuzImClicks/Raccoon # cannot copy -> $'\r': command not found
+RUN cd /home/Raccoon
+RUN git submodule update --init # download CuzImClicks/pycoral
+WORKDIR /home/Raccoon/pycoral
+RUN cd /home/Raccoon/pycoral
+RUN git submodule update --init # download CuzImClicks/models
 COPY pull.py .
 COPY push.py .
-RUN wget https://raw.githubusercontent.com/CuzImClicks/Raccoon/main/Logger.py -P ./examples/
-RUN wget https://raw.githubusercontent.com/google-coral/test_data/master/efficientdet_lite3_512_ptq_edgetpu.tflite -P ./test_data/
 RUN bash examples/install_requirements.sh detect_image.py
 RUN mkdir input
 RUN mkdir output
+RUN apt-get -y update
+RUN apt-get -y upgrade
