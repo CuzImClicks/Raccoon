@@ -7,8 +7,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument("metrics", nargs="+", type=str, choices=["learning_rate", "loss", "time_per_step", "det_loss", "cls_loss", "box_loss", "reg_l2_loss", "gradient_norm", "val_loss", "val_det_loss", "val_cls_loss", "val_reg_l2_loss", "val_box_loss"])
 parser.add_argument("--input", "-i", nargs="+", type=str, default="data.txt", required=False)
 parser.add_argument("--output", "-o", type=str, default="graph.png", required=False)
+parser.add_argument("--size_x", type=int, default=10, required=False)
+parser.add_argument("--size_y", type=int, default=6, required=False)
 parser.add_argument("--end", action="store_true", required=False)
 parser.add_argument("--lowest", action="store_true", required=False)
+parser.add_argument("--legend", action="store_true", required=False)
+parser.add_argument("--show", action="store_true", required=False)
 
 args = parser.parse_args()
 
@@ -32,10 +36,11 @@ for f in args.input:
 files = [generate_data_val(open(file, "r").read()) if "val_loss" in open(file, "r").read() else generate_data(open(file, "r").read()) for file in files]
 
 import matplotlib.pyplot as plt
+plt.figure(figsize=(args.size_x, args.size_y))
 
 def add_graph(plt, data: dict, name: str, draw_end=False, draw_lowest=False):
     values = [float(match[name]) for match in data]
-    plt.plot(range(1,  int(data[-1]["epoch"]) + 1), values, label = name)
+    plt.plot(range(1, int(data[-1]["epoch"]) + 1), values, label = name)
     if draw_end:
         last = values[-1]
         plt.axhline(y=last)
@@ -51,8 +56,11 @@ for metric in args.metrics:
         if metric in file[0].keys():
             add_graph(plt, file, metric, args.end, args.lowest)
 
-plt.legend(loc="upper right")
+if args.legend:
+    plt.legend(loc="upper right")
 plt.xlabel("Epoch")
 if any(["loss" in metric for metric in args.metrics]):
     plt.ylabel("Loss")
 plt.savefig(args.output)
+if args.show:
+    plt.show()
